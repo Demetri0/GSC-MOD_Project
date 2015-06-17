@@ -1,0 +1,23 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="eBlock"><tr><td style="padding:3px;">         
+<?if($MODER_PANEL$)?><div style="float:right">$MODER_PANEL$</div><?endif?>         
+<div class="eTitle" style="text-align:left;"><a href="$ENTRY_URL$">$TITLE$</a></div>         
+<?if($MESSAGE$)?><div class="eMessage" style="text-align:left;clear:both;padding-top:2px;padding-bottom:2px;">         
+
+<table align="left">         
+<td class="eKartaka" align="left" width="236">         
+<?if($OTHER1$)?><IMG src="$OTHER1$" alt="$OTHER2$" style="margin: 0px 0px 7px 8px;" width="237" height="149"><?else?><img border="0" src="http://www.cstrike-net.ru/img/no_image.png" style="margin: 0px 0px 7px 8px;"><?endif?>         
+</td> </td>         
+</table>         
+
+$MESSAGE$         
+</div><?endif?>         
+<?if($ATTACHMENTS$)?><div class="eAttach">Прикрепления: $ATTACHMENTS$</div><?endif?><div class="eDetails"         
+
+style="clear:both;">         
+<?if($CATEGORY_NAME$)?>Категория: <a href="$CATEGORY_URL$">$CATEGORY_NAME$</a> |<?endif?>         
+Просмотров: $READS$ |         
+Дата: <span title="$TIME$">$DATE$</span>         
+<?if($RATING$)?>| Рейтинг: $RATING$/$RATED$<?endif?>         
+<?if($COMMENTS_URL$)?>| <a href="$COMMENTS_URL$">Комментарии ($COMMENTS_NUM$)</a><?endif?>         
+<?if($OTHER3$)?> | Источник: $OTHER3$</a><?endif?>         
+</div></td></tr></table>

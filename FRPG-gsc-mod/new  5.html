@@ -1,0 +1,98 @@
+<html>
+ <head>
+ <title>PDA $_USERNAME$</title>
+ <link type="text/css" rel="StyleSheet" href="/_st/my.css" />
+ <style type="text/css">
+.pdaCommunityTableHead{text-align}
+ </style>
+ </head>
+ <body id="main-body">
+ <!--script type="text/javascript">if(true){window.resizeTo(1200,760);}</script-->
+ <div id="pdaProfileRamka">
+ <div class="screenPDA">
+ <?if($USER_GROUP$=="Администраторы")?>
+ <div class="btnPdaNew2" id="communityUserActive"><a onclick="alert('Извините\nДанный модуль будет работать ещё не скоро\nПриносим свои извинения');" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;">Группировки</a></div>
+ <div class="btnPdaNew2" id="calcUserActive"><a onclick="alert('Извините\nДанный модуль будет работать ещё не скоро\nПриносим свои извинения');" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;">Калькулятор</a></div>
+ <?endif?>
+ <div class="btnPdaNew2" id="invUserActive" valign="middle"><a onclick="alert('Извините\nДанный модуль будет работать ещё не скоро\nПриносим свои извинения');" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;cursor:default">Экипировка</a></div>
+ <div class="btnPdaNew2" id="infoUserActive"><a style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;" href="?id=5">Информация</a></div>
+ <div class="btnPdaNew" id="btnEdit"><a href="$_CHANGE_DETAILS_URL$"><img src="/xdstyle-2012/setings_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnMail"><a href="$PM_URL$"><img src="/xdstyle-2012/mail_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnUsers"><a href="http://www.gsc-mod.ru/index/8"><img src="/xdstyle-2012/profile_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnPower"><a onclick="window.close();" href="?id=0"><img src="/xdstyle-2012/power2.png"></a></div>
+ <div class="interface">
+	<table>
+		<tr>
+			<td class="pdaCommunityTableHead">
+				Название
+			</td>
+			<td class="pdaCommunityTableHead">
+				Логотип
+			</td>
+			<td class="pdaCommunityTableHead">
+				Рейтинг
+			</td>
+			<td class="pdaCommunityTableHead">
+				Численность
+			</td>
+			<td class="pdaCommunityTableHead">
+				Финансы
+			</td>
+		</tr>
+		<tr>
+			<td class="pdaCommunityTableTd">
+				Одиночки
+			</td>
+			<td class="pdaCommunityTableTd">
+				<img src="/gruupsicons/stalk.gif"></img>
+			</td>
+			<td class="pdaCommunityTableTd">
+				0
+			</td>
+			<td class="pdaCommunityTableTd">
+				$MYINF_13$
+			</td>
+			<td class="pdaCommunityTableTd">
+				0
+			</td>
+		</tr>
+		<tr>
+			<td class="pdaCommunityTableTd">
+				Долг
+			</td>
+			<td class="pdaCommunityTableTd">
+				<img src="/gruupsicons/stalk.gif"></img>
+			</td>
+			<td class="pdaCommunityTableTd">
+				0
+			</td>
+			<td class="pdaCommunityTableTd">
+				$MYINF_14$
+			</td>
+			<td class="pdaCommunityTableTd">
+				0
+			</td>
+		</tr>
+		<tr>
+			<td class="pdaCommunityTableTd">
+				Свобода
+			</td>
+			<td class="pdaCommunityTableTd">
+				<img src="/gruupsicons/stalk.gif"></img>
+			</td>
+			<td class="pdaCommunityTableTd">
+				0
+			</td>
+			<td class="pdaCommunityTableTd">
+				$MYINF_12$
+			</td>
+			<td class="pdaCommunityTableTd">
+				0
+			</td>
+		</tr>
+	</table>
+ </div>
+ </div>
+ </div>
+ </body>
+</html>

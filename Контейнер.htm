@@ -1,0 +1,244 @@
+<!-- <block1> -->
+<?if($SMENU_1$)?>
+<table border="0" cellpadding="0" cellspacing="0">
+ <tr>
+ <td class="box-title_l_border" width="12"></td>
+ <td class="box-title" height="48" align="center" width="203">
+ <b><!-- <bt> --><!--<s5184>-->PDA<!--</s>--><!-- </bt> --></b>
+ </td>
+ <td class="box-title_r_border" width="12"></td>
+ </tr>
+ <tr>
+ <td class="box_content-pda" colspan="3">
+ <!-- <bc> -->
+<div id="pda">
+ <div style="overflow:hidden;">
+ <div style="position:relative">
+ <div><?if($USER_LOGGED_IN$)?><a target="_blank" href="$PERSONAL_PAGE_LINK$"><?else?><a href="$LOGIN_LINK$"><?endif?><img style="position:absolute;left:5px;top:5px" src="/xdstyle-2012/users_off.png"><img id="pda-profile-btn" style="position:absolute;left:5px;top:5px" src="/xdstyle-2012/users_on.png"></a></div>
+ <div><?if($USER_LOGGED_IN$)?><a target="_blank" href="$PM_URL$" title="$UNREAD_PM$"><?else?><a href="$LOGIN_LINK$"><?endif?><?if($UNREAD_PM$>0)?><img style="position:absolute;left:31px;top:5px" src="/xdstyle-2012/ls_imp.gif"><?else?><img style="position:absolute;left:31px;top:5px" src="/xdstyle-2012/mail_off.png"><?endif?><img id="pda-mail-btn" style="position:absolute;left:31px;top:5px" src="/xdstyle-2012/mail_on.png"></a></div>
+ <div id="pda-power"><?if($USER_LOGGED_IN$)?><a href="$LOGOUT_LINK$"><?else?><a href="$LOGIN_LINK$"><?endif?><img style="position:absolute;top:0px;right:0px" src="/xdstyle-2012/off_off.png"><img id="pda-off-btn" style="position:absolute;top:0px;right:0px" src="/xdstyle-2012/off_on.png"></a></div>
+ <div style="position:absolute;top:5px;left:57px;width:122px;height:21px;background-image:url('/xdstyle-2012/search_forma2.png')">
+ <form onsubmit="this.sfSbm.disabled=true" method="get" style="margin:0pt;" action="/search/">
+ <input class="searchSbmFl" name="sfSbm" type="image" src="/xdstyle-2012/lupa.png" style="width:20px;height:21px;" onmouseout="this.src='/xdstyle-2012/lupa.png'" onmouseover="this.src='/xdstyle-2012/lupa_on.png'">
+ <input style="background-image:url('/xdstyle-2012/bg_search.png');width:96px;height:21px;position:absolute;left:20px;top:0px;border:0px;color:#a1a19f;font-size:8pt" name="q" maxlength="30" value="Поиск..." onclick="this.value=''" size="20" class="queryField" type="text">
+ </form>
+ </div> 
+ <div id="pda-slider">
+ <div id="pdaDivSlider">
+ <div id="pda-slide1" style="width:209px">
+ <div style="padding-left:4px;" class="clear"><?if($USER_LOGGED_IN$)?><a href="">$USERNAME$</a> - <span id="user-group">$USER_GROUP$</span><?else?>Нелегал<?endif?></div>
+ <div style="padding-left:4px"><?if($USER_LOGGED_IN$)?>Дата: $DATE$<?else?><a href="$REGISTER_LINK$">Регистрация</a><?endif?></div>
+ <div style="padding-left:4px"><?if($USER_LOGGED_IN$)?>Непрочитанных ЛС: $UNREAD_PM$<?else?><marquee width="160" behavior="scroll" scrollamount="4" direction="left" style="color:red">Connection Filed</marquee><?endif?></div>
+ </div>
+ <div id="pda-slide2" style="width:209px">
+ <div style="padding-left:4px;" class="clear"><?if($USER_LOGGED_IN$)?><a href="">$USERNAME$</a> - <span id="user-group">$USER_GROUP$</span><?else?>Нелегал<?endif?></div>
+ <div style="padding-left:4px"><?if($USER_LOGGED_IN$)?>В зоне: $USER_REG_DAYS$-дней<?else?><a href="$REGISTER_LINK$">Регистрация</a><?endif?></div>
+ <div style="padding-left:4px"><?if($USER_LOGGED_IN$)?>Пропуск №: $USER_ID$<?else?><marquee width="160" behavior="scroll" scrollamount="4" direction="left" style="color:red">Connection Filed</marquee><?endif?></div>
+ </div>
+ <div id="pda-slide3" style="width:209px">
+ <div style="padding-left:4px;" class="clear"><?if($USER_LOGGED_IN$)?><a href="">$USERNAME$</a> - <span id="user-group">$USER_GROUP$</span><?else?>Нелегал<?endif?></div>
+ <div style="padding-left:4px"><?if($USER_LOGGED_IN$)?>Имя: $USER_FULL_NAME$<?else?><a href="$REGISTER_LINK$">Регистрация</a><?endif?></div>
+ <div style="padding-left:4px"><?if($USER_LOGGED_IN$)?>День рождения: $USER_BIRTHDAY$<?else?><marquee width="160" behavior="scroll" scrollamount="4" direction="left" style="color:red">Connection Filed</marquee><?endif?></div>
+ </div>
+ </div>
+ </div>
+ <a href="javascript:backPdaSlide()"><img style="position:absolute;bottom:1px;right:24px" src="/xdstyle-2012/left_off.png"><img style="position:absolute;bottom:1px;right:24px" id="pda-inleft-btn" src="/xdstyle-2012/left_on.png"></a><a href="javascript:nextPdaSlide()"><img style="position:absolute;bottom:1px;right:2px" src="/xdstyle-2012/right_off.png"><img id="pda-inright-btn" style="position:absolute;bottom:1px;right:2px" src="/xdstyle-2012/right_on.png"></a>
+ </div>
+ <div id="menu">
+ <div style="border:1px solid #3d4040;border-bottom:0px;background-color:#1f2525;padding-left:3px;margin-top:5px">Последнее на форуме</div>
+ <div style="border:1px solid #3d4040;border-top:1px dotted #3d4040;background-color:#1f2525">$MYINF_2$</div>
+ </div>
+ </div>
+ <div id="pda-bot-btn" onclick="showMenu()" align="center">
+ <img id="pda-bot-img" class="povorotDue" style="padding-top:3px" style="width:13px;height:12px;" src="/xdstyle-2012/strelka.png">
+ </div>
+</div>
+<script type="text/javascript" src="/xdstyle-2012/js/menu.js"></script>
+<script type="text/javascript">
+ showMenu();
+ var pdaDivSlider = document.getElementById('pdaDivSlider');
+ pdaDivSlider.style.left = '-209px';
+ var pdaDivSliderLeft = pdaDivSlider.style.left;
+ 
+ function nextPdaSlide(){
+ if(pdaDivSlider.style.left !== '-418px'){
+ if(pdaDivSlider.style.left=='0px'){
+ pdaDivSlider.style.left = '-209px';
+ }else{
+ pdaDivSlider.style.left = '-418px';
+ }
+ }
+ }
+ function backPdaSlide(){
+ if(pdaDivSlider.style.left !== '0px'){
+ if(pdaDivSlider.style.left=='-418px'){
+ pdaDivSlider.style.left = '-209px';
+ }else{
+ pdaDivSlider.style.left = '0px';
+ }
+ }
+ }
+</script>
+ <!-- </bc> -->
+ 
+ </td>
+ </tr>
+</table>
+<?endif?>
+<!-- </block1> -->
+
+<!-- <block2> -->
+<?if($CATEGORIES$)?>
+<table border="0" cellpadding="0" cellspacing="0">
+ <tr>
+ <td class="box-title_l_border" width="12"></td>
+ <td class="box-title" height="48" align="center" width="203">
+ <b><!-- <bt> --><!--<s5351>-->Категории раздела<!--</s>--><!-- </bt> --></b>
+ </td>
+ <td class="box-title_r_border" width="12"></td>
+ </tr>
+ <tr>
+ <td class="box_content" colspan="3">
+ <!-- <bc> -->$CATEGORIES$<!-- </bc> -->
+ </td>
+ </tr>
+</table>
+<?endif?>
+<!-- </block2> -->
+
+<!-- <block3> -->
+<?if($CHAT_BOX$)?>
+<table border="0" cellpadding="0" cellspacing="0">
+ <tr>
+ <td class="box-title_l_border" width="12"></td>
+ <td class="box-title" height="48" align="center" width="203">
+ <b><!-- <bt> --><!--<s3199>-->Мини-чат<!--</s>--><!-- </bt> --></b>
+ </td>
+ <td class="box-title_r_border" width="12"></td>
+ </tr>
+ <tr>
+ <td class="box_content" colspan="3">
+ <!-- <bc> -->$CHAT_BOX$<!-- </bc> -->
+ </td>
+ </tr>
+</table>
+<?endif?>
+<!-- </block3> -->
+
+<!-- <block4> -->
+<?if($POLL$)?>
+<table border="0" cellpadding="0" cellspacing="0">
+ <tr>
+ <td class="box-title_l_border" width="12"></td>
+ <td class="box-title" height="48" align="center" width="203">
+ <b><!-- <bt> --><!--<s5207>-->Наш опрос<!--</s>--><!-- </bt> --></b>
+ </td>
+ <td class="box-title_r_border" width="12"></td>
+ </tr>
+ <tr>
+ <td class="box_content" colspan="3">
+ <!-- <bc> -->$POLL$<!-- </bc> -->
+ </td>
+ </tr>
+</table>
+<?endif?>
+<!-- </block4> -->
+
+     <!-- <block141> -->
+<table border="0" cellpadding="0" cellspacing="0">
+ <tr>
+ <td class="box-title_l_border" width="12"></td>
+ <td class="box-title" height="48" align="center" width="203">
+ <b><!-- <bt> -->Наши друзья<!-- </bt> --></b>
+ </td>
+ <td class="box-title_r_border" width="12"></td>
+ </tr>
+ <tr>
+ <td class="box_content-pda" colspan="3">
+ <!-- <bc> --><table width="209" border="0px" cellspacing="11" cellpadding="0">
+ <tr>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://zov-zone.ru/"><img src="http://zov-zone.ru/template/88x31.gif"></a>
+ </td>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ </tr>
+
+ <tr>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ </tr>
+
+ <!-- 3я строка
+ <tr>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ </tr>
+ -->
+ <!-- 4я строка
+ <tr>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ <td class="gsctdBanner">
+ <a target="_blank" href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ </tr>
+ -->
+ <!-- 5я строка
+ <tr>
+ <td target="_blank" class="gsctdBanner">
+ <a href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ <td target="_blank" class="gsctdBanner">
+ <a href="http://www.gsc-mod.ru/forum/17-428-1"><img src="http://www.gsc-mod.ru/reklama.png"></a>
+ </td>
+ </tr>
+ -->
+</table><!-- </bc> -->
+ 
+ </td>
+ </tr>
+</table>
+<!-- </block141> -->
+     
+<!-- <block5> -->
+<?if($COUNTER$ || $ONLINE_COUNTER$)?>
+<table border="0" cellpadding="0" cellspacing="0">
+ <tr>
+ <td class="box-title_l_border" width="12"></td>
+ <td class="box-title" height="48" align="center" width="203">
+ <b><!-- <bt> --><!--<s5195>-->Статистика<!--</s>--><!-- </bt> --></b>
+ </td>
+ <td class="box-title_r_border" width="12"></td>
+ </tr>
+ <tr>
+ <td class="box_content" colspan="3">
+ <div align="center"><!-- <bc> -->$COUNTER$<?if($ONLINE_COUNTER$)?><hr />$ONLINE_COUNTER$$ONLINE_USERS_LIST$<?endif?><!-- </bc> --></div>
+ </td>
+ </tr>
+</table>
+<?endif?>
+<!-- </block5> -->
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="bot_stat" height="34" width="227" colspan="3">
+ 
+</td>
+</tr>
+</table>
+<table>
+ <tr>
+ <td height="62">
+ </td>
+ </tr>
+</table>

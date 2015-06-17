@@ -1,0 +1,81 @@
+		<!---->
+			<table border="0" cellpadding="0" cellspacing="0" width="704">
+				<tr class="news_bg_title">
+					<td height="48" colspan="3">
+						<table border="0" cellpadding="0" width="100%" cellspacing="0">
+							<tr>
+								<td class="news_title" valign="middle" align="left">
+									<a style="display:block" href="$ENTRY_URL$">$TITLE$</a>
+								</td>
+								<td width="90" align="right">
+									<?if($MODER_PANEL$)?><div style="padding-right:9px" class="moder_panel">$MODER_PANEL$</div><?endif?>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="news_border-l" width="8"><null></null></td>
+					<td>
+						<table border="0" cellpadding="0" width="100%" cellspacing="0">
+							<tr>
+								<td style="overflow:hidden">
+									<?if($MESSAGE$)?>
+									<div align="center" style="float:left;width:232px;height:178px;background-image:url('/xdstyle-2012/ramka.png');">
+										<div align="center" style="width:214px;height:158px;padding-top:12px;">
+											<?if($SOURCE_URL$)?>
+	<div class="news_image" style="width:214;height:158;background-color:black;background-image:url('$SOURCE_URL$');background-size:cover;-o-background-size: 214px 158px;-webkit-background-size:cover;-moz-background-size:cover;"></div>
+<?else?>
+	<div class="news_image" style="width:214;height:158;background-image:url('/xdstyle-2012/gsc-mod.png');background-size:contain;-o-background-size: 214px 158px;-webkit-background-size:contain;-moz-background-size:contain;"></div>
+<?endif?>
+										</div>
+									</div>
+									<div style="overflow:hidden;width:425px" class="news_message">
+										$MESSAGE$
+									</div>
+									<?endif?>
+									<?if($ATTACHMENTS$)?>
+										<div class="eAttach">Прикрепления: $ATTACHMENTS$</div>
+									<?endif?>
+									<div style="height:10px;clear:both;">
+									<null><null/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="news_stat" border="0" cellpadding="0" width="100%" cellspacing="0">
+										<tr>
+											<td align="center" width="125" class="news_inf">
+												Дата: <span title="$TIME$">$DATE$</span>
+											</td>
+											<?if($USERNAME$)?>
+												<td align="center" width="165" style="background-image:url('/xdstyle-2012/news_bg_inf2.jpg')">
+													Добавил: <a href="$PROFILE_URL$">$USERNAME$</a>
+												</td>
+											<?endif?>
+											<?if($COMMENTS_URL$)?>
+												<td align="center" width="125" class="news_inf">
+													<a href="$COMMENTS_URL$">Комментарии ($COMMENTS_NUM$)</a>
+												</td>
+											<?endif?>
+											<?if($CATEGORY_NAME$)?>
+												<td align="center" width="165" style="background-image:url('/xdstyle-2012/news_bg_inf2.jpg')">
+													<a href="$CATEGORY_URL$">$CATEGORY_NAME$</a>
+												</td>
+											<?endif?>
+											<td align="right">
+												<?if($RATING$)?>
+													<div><?$RSTARS$('12','/.s/img/stars/3/12.png','0','float')?></div>
+												<?endif?>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td class="news_border-r" width="8"><null></null></td>
+				</tr>
+			</table>
+		<!---->

@@ -1,0 +1,20 @@
+var xd = 'xd_style-2012'
+slide = new Object();
+slide.img1 = '/'+xd+'/slides/'+"slide1.jpg";
+slide.img2 = '/'+xd+'/slides/'+"slide2.jpg";
+slide.img3 = '/'+xd+'/slides/'+"slide3.jpg";
+slide.img4 = '/'+xd+'/slides/'+"slide4.jpg";
+slide.img5 = '/'+xd+'/slides/'+"slide5.jpg";
+
+alpha = new Array();
+alpha[10]  = '0.0';
+alpha[9]  = '0.1';
+alpha[8]  = '0.2';
+alpha[7]  = '0.3';
+alpha[6]  = '0.4';
+alpha[5]  = '0.5';
+alpha[4]  = '0.6';
+alpha[3]  = '0.7';
+alpha[2]  = '0.8';
+alpha[1]  = '0.9';
+alpha[0]  = '1.0';

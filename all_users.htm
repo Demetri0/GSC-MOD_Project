@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>PDA - Сталкеры</title>
+		<link type="text/css" rel="StyleSheet" href="/_st/my.css" />
+		<style>
+			
+		</style>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body id="main-body">
+		<!--script type="text/javascript">if (window.name.length>2){window.resizeTo(1200,760);}</script-->
+		<div id="pdaProfileRamka">
+		<div class="screenPDA">
+			<div class="btnPdaNew" id="btnEdit"><a href="$_CHANGE_DETAILS_URL$"><img src="/xdstyle-2012/setings_pda.png"></a></div>
+			<div class="btnPdaNew" id="btnMail"><a href="$PM_URL$"><img src="/xdstyle-2012/mail_pda.png"></a></div>
+			<div class="btnPdaNew" id="btnUsers"><?if($USERNAME$==$_USERNAME$)?><a href="$USERS_LIST_URL$"><?else?><a href="$PROFILE_URL$"><?endif?><img src="/xdstyle-2012/profile_pda.png"></a></div>
+			<div class="btnPdaNew" id="btnPower"><a onclick="window.close();" href="?id=0"><img src="/xdstyle-2012/power2.png"></a></div>
+			<div class="interfaceEdit">
+			    <div align="left" style="padding-lefT:5px;padding-top:5px;padding-bottom:2px;color:#d2cbc0">Пользователей зарегистрировано: <b>$NUM_ENTRIES$<b></div>
+			    	<hr>
+						<div style="color:#d2cbc0">
+							$BODY$
+						</div>
+					<hr>
+				<div align="center">$SEARCH_FORM$</div>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

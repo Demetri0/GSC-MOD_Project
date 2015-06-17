@@ -1,0 +1,173 @@
+<html>
+ <head>
+ <title>PDA $_USERNAME$</title>
+ <link type="text/css" rel="StyleSheet" href="/_st/my.css" />
+ <style type="text/css">
+ .infoUser2{background-color:#212626;border:1px solid #3e4444;position:absolute;left:224px;top:0px;width:426px;height:325px;}
+ #infoUser{display:block}
+ #equipment{display:none}
+ .pdaAutoris{width:199px;height:40px;border:1px solid #3e4444;background-color:#292d2e;overflow:hidden;margin-top:5px}
+ .pdaAutoris:hover{background-color:#292f2f}
+ </style>
+ </head>
+ <body id="main-body">
+ <!--script type="text/javascript">if(true){window.resizeTo(1200,760);}</script-->
+ <div id="pdaProfileRamka">
+ <div class="screenPDA">
+ <?if($USER_GROUP$=="Администраторы")?>
+ <div class="btnPdaNew2" id="communityUserActive"><a onclick="alert('Извините\nДанный модуль будет работать ещё не скоро\nПриносим свои извинения');" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;">Группировки</a></div>
+ <div class="btnPdaNew2" id="calcUserActive"><a onclick="alert('Извините\nДанный модуль будет работать ещё не скоро\nПриносим свои извинения');" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;">Калькулятор</a></div>
+ <?endif?>
+ <div class="btnPdaNew2" id="invUserActive" valign="middle"><a onclick="alert('Извините\nДанный модуль будет работать ещё не скоро\nПриносим свои извинения');" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;cursor:default">Экипировка</a></div>
+ <div class="btnPdaNew2" id="infoUserActive"><a style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;" href="?id=5">Информация</a></div>
+ <div class="btnPdaNew" id="btnEdit"><a href="$_CHANGE_DETAILS_URL$"><img src="/xdstyle-2012/setings_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnMail"><a href="$PM_URL$"><img src="/xdstyle-2012/mail_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnUsers"><a href="http://www.gsc-mod.ru/index/8"><img src="/xdstyle-2012/profile_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnPower"><a onclick="window.close();" href="?id=0"><img src="/xdstyle-2012/power2.png"></a></div>
+ <div class="interface">
+ <div class="miniChat" align="center" valign="middle">
+ <div id="chat">
+ <div style="border:1px solid #3e4444;overflow:hidden">
+ $CHAT_BOX$
+ </div>
+ <?if(!$USER_LOGGED_IN$)?>
+ <div class="pdaAutoris">
+ <a style="display:block;height:100%;font-size:10pt;padding-top:10px;font-family:Tahoma" href="$LOGIN_LINK$">Необходима авторизация</a>
+ </div>
+ <?endif?>
+ </div>
+ </div>
+ <div class="counter" align="center" valign="middle">
+ <div style="padding-left:15px;height:90%;margin-top:10px;margib-bottom:10px">
+ | <span class="pda-li"><a href="$_COM_ACTIVITY_URL$">Коментарии: $_COM_ENTRIES$</a></span><br>
+ | <span class="pda-li"><a href="$_FORUM_ACTIVITY_URL$">Форум: $_FORUM_ENTRIES$</a></span><br>
+ | <span class="pda-li"><a href="$_NEWS_ACTIVITY_URL$">Новости: $_NEWS_ENTRIES$</a></span><br>
+ | <span class="pda-li"><a href="$_LOAD_ACTIVITY_URL$">Файлы: $_LOAD_ENTRIES$</a></span><br>
+ </div>
+ </div>
+ <div id="equipment" class="infoUser2">
+ hello
+ </div>
+ <div id="infoUser" class="infoUser2">
+ <div class="infoContent">
+ <div id="moderPanel">$MODER_PANEL$</div>
+ <table id="userinfo" width="100%" style="margin:0px">
+ <tr>
+ <td>Группа</td>
+ <td>$_GROUP_NAME$</td>
+ </tr>
+ <?if($AWARDS_READ_URL$ || $_REP_READ_URL$)?>
+ <tr>
+ <td width="130">Поощрения:</td>
+ <td><?if($AWARDS_READ_URL$)?><a href="$AWARDS_READ_URL$" title="Список наград">Награды (<b>$AWARDS$</b>)</a> <?if($AWARDS_DO_URL$)?>[<a href="$AWARDS_DO_URL$">+</a>]<?endif?><?endif?><?if($_REP_READ_URL$)?><?if($AWARDS_READ_URL$)?> &nbsp; <?endif?><a title="Смотреть историю репутации" class="repHistory" href="$_REP_READ_URL$">Репутация (<b>$_REPUTATION$</b>)</a><?if($_REP_DO_URL$)?> [<a href="$_REP_DO_URL$">&plusmn;</a>]<?endif?><?endif?></td>
+ </tr>
+ <?endif?>
+ <?if($_BAN_READ_URL$)?>
+ <tr>
+ <td>Замечания:</td>
+ <td><a title="Смотреть историю замечаний" href="$_BAN_READ_URL$">$_BAN_PERCENT$%</a> <?if($_BAN_DO_URL$)?>&nbsp; <a href="$_BAN_DO_URL$"><img alt="" style="margin:0;padding:0;border:0;" title="Изменить уровень замечаний" src="http://s60.ucoz.net/img/fr/wm.gif" width="10" height="9" /></a><img alt="" style="margin:0;padding:0;border:0;" src="http://s60.ucoz.net/img/fr/w$_BAN_RATING$.gif" width="49" height="9" /><a href="$_BAN_DO_URL$"><img alt="" style="margin:0;padding:0;border:0;" title="Изменить уровень замечаний" src="http://s60.ucoz.net/img/fr/wp.gif" width="10" height="9" /></a><?endif?></td>
+ </tr>
+ <?endif?>
+ <?if($_NAME$)?>
+ <tr>
+ <td>Имя:</td>
+ <td>$_NAME$ <?if($_GENDER_NAME$)?>[ $_GENDER_NAME$ ]<?endif?></td>
+ </tr>
+ <?endif?>
+ <?if($MODER_PANEL$)?>
+ <tr>
+ <td>Регистрационный IP:</td>
+ <td><a href="http://www.ripe.net/perl/whois?$_IP_ADDRESS$" target="_blank">$_IP_ADDRESS$</a></td>
+ </tr>
+ <?endif?>
+ <?if($_REG_TIME$)?>
+ <tr>
+ <td>Дата регистрации:</td>
+ <td>$_REG_TIME$</td>
+ </tr>
+ <?endif?>
+ <?if($_BIRTHDAY$)?>
+ <tr>
+ <td>Дата рождения:</td>
+ <td>$_BIRTHDAY$ [ <b>$_AGE$</b> $_ZODIAC$ ]</td>
+ </tr>
+ <?endif?>
+ <?if($_EMAIL$)?>
+ <tr>
+ <td>E-mail:</td>
+ <td><?if($_EMAIL_IS_HIDDEN$)?><?if($MODER_PANEL$)?>$_EMAIL$<?endif?><span style="font-size:7pt;color:7f7f7f"><i> (Адрес скрыт)</i></span><?else?>$_EMAIL$<?endif?>
+ </td>
+ </tr>
+ <?endif?>
+ <?if($_COUNTRY$)?>
+ <tr>
+ <td><?if($UNET_ID$)?>Место проживания<?else?>Страна<?endif?>:</td>
+ <td>$_COUNTRY$</td>
+ </tr>
+ <?endif?>
+ <?if($_CITY$)?>
+ <tr>
+ <td>Город:</td>
+ <td>$_CITY$</td>
+ </tr>
+ <?endif?>
+ <?if($_WWW$)?>
+ <tr>
+ <td>Персональный сайт:</td>
+ <td>$_WWW$</td>
+ </tr>
+ <?endif?>
+ <?if($_ICQ$)?>
+ <tr>
+ <td>ICQ:</td>
+ <td>$_ICQ$</td>
+ </tr>
+ <?endif?>
+ <?if($_AOL$)?>
+ <tr>
+ <td>Skype:</td>
+ <td>$_AOL$</td>
+ </tr>
+ <?endif?>
+ <?if($_MSN$)?>
+ <tr>
+ <td>Steam:</td>
+ <td>$_MSN$</td>
+ </tr>
+ <?endif?>
+ <?if($_YAHOO$)?>
+ <tr>
+ <td>ВКонтакте:</td>
+ <td>$_YAHOO$</td>
+ </tr>
+ <?endif?>
+ </table>
+ </div>
+ </div>
+ <div class="avatarUser" align="center" valign="middle">
+ <div>
+ <div id="userName">$_USERNAME$</div>
+ $_AVATAR$<br>
+ <div style="margin-top:3px;margin-bottom:3px" title="$_RANK_NAME$($_RANK$)">$_RANK_ICON$</div>
+ <?if($_PM_READ_URL$)?><a href="$PM_URL$">Личных сообщений: $UNREAD_PM$</a><?endif?>
+ <?if($_PM_SEND_URL$)?><a href="$_PM_SEND_URL$" title="Отправить личное сообщение">Отправить ЛС</a><?endif?>
+ </div>
+ <?if($USER_GROUP$=="Администраторы")?>
+ <div style="position:absolute;left:5px;right:5px;bottom:5px;" align="center">
+<input name="health" title="Здоровье" type="text" value="1600" style="color:#0afe00;border:1px solid #010101;background-color:#3e4444;width:40px;text-align:center" readonly onclick="this.select()" maxlength="4">
+<input name="defence" title="Броня" type="text" value="1200" style="color:#00ebff;border:1px solid #010101;background-color:#3e4444;width:40px;text-align:center" readonly onclick="this.select()" maxlength="4">
+<input name="strong" title="Боевая сила" type="text" value="1300" style="color:#ff0015;border:1px solid #010101;background-color:#3e4444;width:40px;text-align:center" readonly onclick="this.select()" maxlength="4">
+ </div>
+ <?endif?>
+ </div>
+ <div class="subscript" align="center" valign="middle">
+ <div id="subscriptTitle">Подпись:</div>
+ <div id="subscriptUser">
+ $_SIGNATURE$
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </body>
+</html>

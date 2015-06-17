@@ -1,0 +1,296 @@
+<html>
+	<head>
+		<title>$SITE_NAME$</title>
+		<link rel="stylesheet" type="text/css" href="/style.css"></link>
+		<script type="text/javascript" src="/button.js"></script>
+	</head>
+	<body id="main-body">
+		<table border="0" cellpadding="0" cellspacing="0" align="center" height="1000" width="978" id="table-1">
+			<tr>
+				<td width="13" id="left-border">
+					
+				</td>
+				<td id="site-content">
+					<table border="0" id="table-all-content" cellpadding="0" cellspacing="0" height="1000" width="100%">
+						<tr>
+							<td align="center" valign="top" height="260" id="head">
+							<!-- <header> -->
+								 <table border="0" id="header" height="100%" width="100%" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td valign="top">
+			<table border="0" height="25" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td style="padding-left:10px" align="left">
+						Поиск
+					</td>
+					<td style="padding-right:10px" align="right">
+						<?if($USER_LOGGED_IN$)?>Привет $USERNAME$ [$USER_GROUP$]<?else?><a href="$REGISTER_LINK$">Регистрация</a> | <a href="$LOGIN_LINK$">Вход</a><?endif?>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td height="100%">
+			<table border="0" height="160" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td style="padding-left:9px;padding-bottom:3px;" align="left">
+						<table id="slider" class="head_shad" width="398" height="156" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<TEXT></TEXT>
+								</td>
+							</tr>
+							<tr>
+								<td valign="bottom" class="slider-text" height="24">
+									<font id="slider_title" color="#e7e7e7">
+										Создание НПС. Тайны all.spawn
+									</font>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" class="slider-text" height="6">
+									<font id="slider_text_down" color="#e7e7e7">
+										В этом уроке вы научитесь спавнить неписей и др.
+									</font>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td style="padding-right:11px;padding-bottom:3px;" align="right">
+						<table class="head_shad" width="524" height="156" cellpadding="0" cellspacing="0">
+							<tr>
+								<td id="shapka">
+									<TEXT></TEXT>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="bottom">
+			<table border="0" height="72" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td valign="middle" width="312">
+						<table height="57" width="100%" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="17"></td><!-- warning -->
+								<td width="89">
+									<a href="$HOME_PAGE_LINK$"><img class="button-shapka" id="but_main" src="/main.png"></img></a>
+								</td>
+								<td width="7"></td><!-- warning -->
+								<td width="89">
+									<a href="$HOME_PAGE_LINK$forum/"><img class="button-shapka" id="but_forum" src="/forum.png"></img></a>
+								</td>
+								<td width="8"></td><!-- warning -->
+								<td width="89">
+									<a href="$HOME_PAGE_LINK$load/"><img class="button-shapka" id="but_file" src="/file.png"></img></a>
+								</td>
+								<td width="12"></td><!-- warning -->
+							</tr>
+						</table>
+					</td>
+					<td valign="bottom" align="center"><!-- style="padding-bottom:10px;padding-left:4px" -->
+						<table style="position:relative;bottom:10px;left:4px;" cellpadding="0" cellspacing="0" border="0" width="617" height="58">
+							<tr>
+								<td valign="bottom" background="http://s017.radikal.ru/i403/1201/ce/2031d92b6c07.jpg"><!-- Банер тут! (Ну а хули хD) -->
+									<img src="/border-baner.png"></img>
+								</td>
+							<tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+							<!-- </header> -->
+							<!-- <middle> -->
+							</td>
+						</tr>
+						<tr>
+							<td id="content">
+								<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0">
+									<tr>
+										<td id="blocks" align="left" valign="top" width="227">
+										<!-- <container> -->
+											<!-- <block> -->
+<?if($SMENU_1$)?>
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="box-title_l_border" width="12"></td>
+		<td class="box-title" height="48" align="center" width="203">
+			<b><!-- <bt> --><!--<s5184>-->Меню сайта<!--</s>--><!-- </bt> --></b>
+		</td>
+		<td class="box-title_r_border" width="12"></td>
+	</tr>
+	<tr>
+		<td class="box_content" colspan="3">
+			<!-- <bc> -->$MENU_1$<!-- </bc> -->
+		</td>
+	</tr>
+</table>
+<?endif?>
+<!-- </block> -->
+										<!-- </container> -->
+										</td>
+										<td id="news" align="right" valign="top">
+											<table style="padding-top:3px;" border="0" cellpadding="0" cellspacing="0">
+												<tr height="28">
+													<td id="news_top-l" width="10" rowspan="2"></td>
+													<td id="news_top" width="704">
+														<?if($ADD_ENTRY_LINK$)?><div style="text-align:right;padding-bottom:12px;">[ <a href="$ADD_ENTRY_LINK$">Добавить новость</a> ]</div><?endif?>
+													</td>
+													<td id="news_top-r" width="8" rowspan="2"></td>
+												</tr>
+												<tr>
+													<td width="704" id="td-news">
+																<!---->
+			<table border="0" cellpadding="0" cellspacing="0" width="704">
+				<tr class="news_bg_title">
+					<td width="8"></td>
+					<td height="48">
+						<table border="0" cellpadding="0" width="100%" cellspacing="0">
+							<tr>
+								<td class="news_title" valign="middle" align="left">
+									<a href="$ENTRY_URL$">$TITLE$</a>
+								</td>
+								<td align="right">
+									<?if($MODER_PANEL$)?><div class="moder_panel">$MODER_PANEL$</div><?endif?>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td width="8"></td>
+				</tr>
+				<tr>
+					<td class="news_border-l" width="8"><null></null></td>
+					<td>
+						<table border="0" cellpadding="0" width="100%" cellspacing="0">
+							<tr>
+								<td>
+									<?if($MESSAGE$)?>
+									<div class="news_message">
+										$MESSAGE$
+									</div>
+									<?endif?>
+									<?if($ATTACHMENTS$)?>
+										<div style="border:1px solid red" class="eAttach">Прикрепления: $ATTACHMENTS$</div>
+									<?endif?>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="news_stat" border="0" cellpadding="0" width="100%" cellspacing="0">
+										<tr>
+											<td align="center" width="125" class="news_inf">
+												Дата: <span title="$TIME$">$DATE$</span>
+											</td>
+											<td align="center" width="125" class="news_inf">
+												Просмотров: $READS$
+											</td>
+											<?if($COMMENTS_URL$)?>
+												<td align="center" width="125" class="news_inf">
+													<a href="$COMMENTS_URL$">Комментарии ($COMMENTS_NUM$)</a>
+												</td>
+											<?endif?>
+											<?if($CATEGORY_NAME$)?>
+												<td align="center" width="125" class="news_inf">
+													Категория: <a href="$CATEGORY_URL$">$CATEGORY_NAME$</a>
+												</td>
+											<?endif?>
+											<td align="right">
+												<?if($RATING$)?>
+													<div><?$RSTARS$('12','/.s/img/stars/3/12.png','0','float')?></div>
+												<?endif?>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td class="news_border-r" width="8"><null></null></td>
+				</tr>
+			</table>
+		<!---->
+													<table style="display:none" width="100%" height="34" border="0" cellpadding="0" cellspacing="0"><!-- Нижняя часть(присутствует в переключателе страниц".catPages1") -->
+														<tr>
+															<td id="news_bot"><null></null></td>
+														</tr>
+													</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" valign="bottom" height="77" id="podval">
+							<!-- </middle> -->
+							<!-- <footer> -->
+								<table height="77" width="952" cellpadding="0" cellspacing="0" id="podval">
+	<tr>
+		<td align="center" width="220">
+			<table height="55" width="195">
+				<tr>
+					<td>
+						Design by <a href="#">Xom</a> & <a href="#">Diman</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Copyright <a href="#">Lerner</a> <a href="http://gsc-mod.ru">GSC-MOD</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&copy; 2009 - $YEAR$
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td align="center">
+			<table height="55" width="710">
+				<tr>
+					<td>
+						Авторское право на игру и использованные в ней материалы принадлежит GSC Game World.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Любое использование материалов сайта возможно только с разрешения администрации.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						$POWERED_BY$
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+							<!-- </footer> -->
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="13" id="right-border">
+					
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<!-- <popup> -->
+<table border="0" cellpadding="2" cellspacing="1" style="background:#A9B8C2;" width="100%">
+<tr><td style="background:#D4DFF7;" align="center"><b>[TITLE]</b></td></tr>
+<tr><td align="center" style="background:#F4F4F4;padding:5px;">[BODY]</td></tr>
+</table>
+<!-- </popup> -->

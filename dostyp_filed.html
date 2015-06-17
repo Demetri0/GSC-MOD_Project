@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>$SITE_NAME$</title>
+		<link rel="stylesheet" type="text/css" href="/style.css"></link>
+		<script type="text/javascript" src="/button.js"></script>
+		<script type="text/javascript" src="/slider.js"></script>
+	</head>
+	<body id="main-body">
+		<table border="0" cellpadding="0" cellspacing="0" align="center" height="1000" width="978" id="table-1">
+			<tr>
+				<td width="13" id="left-border">
+					
+				</td>
+				<td id="site-content">
+					<table border="0" id="table-all-content" cellpadding="0" cellspacing="0" height="1000" width="100%">
+						<tr>
+							<td align="center" valign="top" height="260" id="head">
+								 $GLOBAL_AHEADER$
+							</td>
+						</tr>
+						<tr>
+							<td id="content">
+								<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0">
+									<tr>
+										<td id="blocks" align="left" valign="top" width="227">
+											$GLOBAL_CLEFTER$
+										</td>
+										<td id="news" align="right" valign="top">
+											<table style="padding-top:3px;" border="0" cellpadding="0" cellspacing="0">
+												<tr height="28">
+													<td id="news_top-l" width="10" rowspan="2"></td>
+													<td id="news_top" width="704">
+														<div style="float:left;font-family:Tahoma;font-size:12px;padding-top:11px;padding-left:22px;font-weight:bold;opasity:0.6;color:#424242;">ВНИМАНИЕ</div><?if($ADD_ENTRY_LINK$)?><div style="text-align:right;padding-bottom:12px;">[ <a href="$ADD_ENTRY_LINK$">Добавить новость</a> ]</div><?endif?>
+													</td>
+													<td id="news_top-r" width="8" rowspan="2"></td>
+												</tr>
+												<tr>
+													<td width="704" id="td-news">
+														 <!---->
+															 <table style="background-color:#1a1e1e" border="0" cellpadding="0" cellspacing="0" width="704">
+															 <tr>
+																<td class="news_border-l" width="8"><null></null></td>
+																 <td>
+																 <!-- body2 -->
+																 <div style="padding-left:5px;padding-top:5px;padding-bottom:5px;padding-right:5px;">
+																	<!-- <middle> -->
+																		 <div style="padding:10px;">
+																		<!-- <body> -->
+																		<div align="center" style="border:1px solid black;background-color:#3b4141">
+																		<?if($USER_LOGGED_IN$)?><br><br><br><!--<s5213>-->Вы входите в группу пользователей, которым запрещено совершать данное действие.<br><br><br>По всем вопросам обращайтесь к администратору сайта.<!--</s>--><br><br><br><br><?endif?>
+																		<?if(!$USER_LOGGED_IN$)?><br><br><br><!--<s5211>-->Гостям запрещено просматривать данную страницу, пожалуйста войдите под своим логином.<!--</s>--><br><br><br><span style="font-size:13pt;text-transform:uppercase;">[ <a href="$LOGIN_LINK$"><b><!--<s3087>-->Вход<!--</s>--></b></a> ]</span><br><br><br><br><?endif?>
+																		</div>
+																		<!-- </body> -->
+																		</div>
+																	<!-- </middle> -->
+																 </div>
+																 <!-- /body2 -->
+																 </td>
+																	<td class="news_border-r" width="8"><null></null></td>
+																 </tr>
+															 </table>
+														 <!---->
+														<table width="100%" height="34" border="0" cellpadding="0" cellspacing="0"><!-- Нижняя часть(присутствует в переключателе страниц".catPages1") -->
+															<tr>
+																<td id="news_bot"><null></null></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" valign="bottom" height="77" id="podval">
+								$GLOBAL_BFOOTER$
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="13" id="right-border">
+					
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

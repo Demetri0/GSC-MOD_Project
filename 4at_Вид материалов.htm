@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="/_st/my.css"></link>
+<style type="text/css">
+ .cBlock1{border:1px solid #313b3c;background-color:#1f2525;}
+ .cBlock2{border:1px solid #313b3c;background-color:#1f2525;}
+</style>
+<body class="mini-4at">
+ <div id="unMiniChat" class="cBlock$PARITY$" style="padding:0 4px 5px 2px;margin-bottom:3px;position:relative">
+ <div style="float:right;font-size:7pt;color:#d2cbc0" title="$DATE$">$TIME$</div>
+<div style="text-align:left;position:relative">
+ <?if($USERNAME$)?><a style="position:absolute;top:2px;left:0px" href="$PROFILE_URL$" title="$USERNAME$" rel="nofollow"><img style="border:0px" alt="" src="/xdstyle-2012/profile.png" width="13" border="0" style="vertical-align:-2px"/></a> <?endif?>
+<a class="chat-nick" href="javascript:void('Apply to')" onclick="parent.window.document.getElementById('mchatMsgF').focus();parent.window.document.getElementById('mchatMsgF').value+='[i]$NAME$[/i], ';return false;"><b>$NAME$</b></a>
+<?if($EMAIL$)?> <a href="$EMAIL_JS$" title="$STR_EMAIL$">E</a><?endif?>
+<?if($SITE$)?> <a rel="nofollow" href="$SITE$" target="_blank" title="$STR_URL$">W</a><?endif?>
+</div>
+ <div class="cMessage" style="text-align:left;overflow:hidden;padding-top:15px">$MESSAGE$</div>
+<?if($CUSTOM1$)?><br>$STR_CUSTOM1$: $CUSTOM1$<?endif?>
+<?if($CUSTOM2$)?><br>$STR_CUSTOM2$: $CUSTOM2$<?endif?>
+</div>
+</body>

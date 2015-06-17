@@ -1,0 +1,31 @@
+<script type="text/javascript">
+function resizeAvatar(){
+	var forumAva = document.getElementById('forumAva')
+	if(forumAva.width>150){
+		forumAva.width=150
+	}
+}
+</script>
+<table border="0" width="100%" cellspacing="1" cellpadding="2" class="postTable">
+<tr><td width="160" class="postTdTop" align="center"><?if($USER_STATUS$)?><div class="statusBlock">$USER_STATUS$</div><?endif?><a class="postUser" href="javascript://" rel="nofollow" onClick="emoticon('[b]$USERNAME$[/b],');return false;">$USERNAME$</a></td><td class="postTdTop"><?if($AWARDS_DO_URL$ && $USER_LOGGED_IN$ && $CUR_USER_ID$!=$UID$)?><div style="float:right"><a href="javascript://" rel="nofollow" onclick="new _uWnd('AwD','Вручить награду',380,200,{autosize:1,maxh:300},{url:'/index/55-$UID$-28-forum-$FID$_$TID$_$ID$_16_$TIMESTAMP$'});return false;"><img alt="" src="http://s60.ucoz.net/img/icon/thumbu.png" width="13" border="0" title="Хороший пост"></a> <a href="javascript://" rel="nofollow" onclick="new _uWnd('AwD','Вручить награду',380,200,{autosize:1,maxh:300},{url:'/index/55-$UID$-47-forum-$FID$_$TID$_$ID$_16_$TIMESTAMP$'});return false;"><img alt="" src="http://s60.ucoz.net/img/icon/thumbd.png" width="13" border="0" title="Плохой пост"></a></div><?endif?>Дата: $WDAY$, $DATE$, $TIME$ | Сообщение # $NUMBER$</td></tr>
+<tr><td class="postTdInfo" align="left" valign="top">
+<?if($AVATAR_URL$)?><img style="max-width:150px" id="forumAva" alt="" title="$USERNAME$" class="userAvatar" border="0" src="$AVATAR_URL$"><?endif?><?if($USER_TITLE$)?><div class="postRankName">$USER_TITLE$</div><?else?><div class="postRankName">$USER_RANK_NAME$</div><?endif?>
+
+<?if($GROUP_ICON$)?><div class="postRankIco">$GROUP_ICON$</div><?else?><div class="postRankIco">$USER_RANK_ICON$</div><?endif?>
+<div class="infoUserForum">
+<?if($GROUP_NAME$)?><div class="postUserGroup">Группа: $GROUP_NAME$</div><?endif?>
+<?if($POSTS$)?><div class="numposts">Сообщений: <span="unp">$POSTS$</span></div><?endif?>
+<?if($AWARDS_READ_URL$)?><div class="reputation">Награды: <a href="$AWARDS_READ_URL$" title="Список наград"><span class="repNums"><b>$AWARDS$</b></span></a> <?if($AWARDS_DO_URL$)?>&nbsp;<a href="$AWARDS_DO_URL$"><span style="font-size:10pt" title="Вручить награду"><b>+</b></span></a><?endif?></div><?endif?>
+<?if($READ_REP_URL$)?><div class="reputation">Репутация: <a title="Смотреть историю репутации" class="repHistory" href="$READ_REP_URL$"><b>$REP_RATING$</b></a> <?if($DO_REP_URL$)?> &nbsp;<a class="reputationDo" title="Изменить репутацию" href="$DO_REP_URL$"><span style="font-size:10pt"><b>&#177;</b></span></a></div><?endif?><?endif?>
+<?if(!$READ_BAN_URL$)?><div class="userBan">Замечания: <a class="banPercent" title="Смотреть историю замечаний" href="$READ_BAN_URL$">$BAN_RATING$</a> <?if(!$DO_BAN_URL$)?> &nbsp;<a title="Изменить уровень замечаний" class="banDo" href="$DO_BAN_URL$">&#177;</a></div><?endif?><?endif?>
+</div>
+<?if($GROUP_ID$)?> <?else?><br><br><br><br><br><?endif?>
+    </td><td class="posttdMessage" valign="top">$MESSAGE$
+<?if($ATTACHMENT$)?> <div align="left" class="eAttach">Прикрепления: $ATTACHMENT$</div><?endif?>
+<?if($SIGNATURE$)?><br><hr size="1" width="150" align="left" class="signatureHr"><span class="signatureView">$SIGNATURE$</span><?endif?>
+<?if($EDITEDBY$)?><br><br><div class="edited">Сообщение отредактировал $EDITEDBY$</div><?endif?></td></tr>
+<tr><td class="postBottom" align="center"><?if($USER_IP$)?><div class="postip">[ <a class="postIpLink" href="http://www.ripe.net/perl/whois?$USER_IP$" target="_blank">$USER_IP$</a><?if($POST_COUNTRY_ID$)?> (<a href="javascript://" rel="nofollow" onclick='prompt("","$POST_COUNTRY$");return false;'>$POST_COUNTRY_ID$</a>)<?endif?> ]</div><?else?>&nbsp;<?endif?></td><td class="postBottom">
+<table class="icon-forum" border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr><td>$USER_DETAILS_ICON_BAR$</td><td align="right" style="padding-right:15px;">$ENTRY_MANAGE_ICON_BAR$</td><td width="2%" nowrap align="right">$ON_TOP_ICON$$DEL_ENTRY_FIELD$</td></tr>
+</table></td></tr></table>
+<script type="text/javascript">resizeAvatar()</script>

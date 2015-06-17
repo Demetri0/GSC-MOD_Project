@@ -1,0 +1,1052 @@
+<html>
+ <head>
+ <title>PDA $_USERNAME$</title>
+ <link type="text/css" rel="StyleSheet" href="/_st/my.css" />
+  <link href="/flexcrollstyles.css" rel="stylesheet" type="text/css" />
+ <script type='text/javascript' src="/flexcroll.js"></script>
+	$GLOBAL_CONTROL$
+  <script type="text/javascript">
+	function getScore(){
+		//Очки группировок
+		document.getElementById('tdScoreStalkers').innerHTML = 4260;//-($MYINF_13$*100);
+		document.getElementById('tdScoreFreedom').innerHTML = 9620;//-($MYINF_12$*100);
+		document.getElementById('tdScoreDolg').innerHTML = 5215;//-($MYINF_14$*100);
+	}
+  </script>
+ <style type="text/css">
+
+ </style>
+<!--баллы-->
+<script type="text/javascript">
+ var gscmoduWnd;
+function openGscModWnd(height,width,content,title,color){
+ gscmoduWnd = document.createElement('div');
+ gscmoduWnd.className = 'centerDiv gscmodWnd';
+ gscmoduWnd.id = 'gscmoduWndid';
+ gscmoduWnd.style.height = height+20+'px';
+ gscmoduWnd.style.width = width+'px';
+ gscmoduWnd.style.marginLeft = '-'+width/2+'px';
+ gscmoduWnd.style.marginTop = '-'+height/2+'px';
+ gscmoduWnd.style.backgroundColor = color;
+ gscmoduWnd.style.opacity = '0.0';
+ document.body.appendChild(gscmoduWnd);
+ var main = '<div style="font-size:10pt;text-shadow:1px 1px black;height:20px;position:relative;color:#d2cbc0;background-color:#3a3f3f;padding-left:6px;"><b>'+title+'</b><div id="btngscwndClose" onclick="showAlpha(\'gscmoduWndid\',0)"></div></div>';
+ gscmoduWnd.innerHTML = main+content;
+ showAlpha('gscmoduWndid',1);
+}
+function toConsiderBalls(){
+	var b_rep = $_REPUTATION$*0.6;
+	var b_file = $_LOAD_ENTRIES$*1.2;
+	var b_news = $_NEWS_ENTRIES$*1.4;
+	var b_forum = $_FORUM_ENTRIES$*0.9;
+	var b_award = $AWARDS$*1.0;
+	var b_coment = $_COM_ENTRIES$*0.6;
+	var b_ban = $_BAN_RATING$*40;
+	var b_minus = $_BOARD_ENTRIES$;
+ var result = b_rep + b_file + b_news + b_forum + b_award + b_coment + b_ban - b_minus;
+ var b_contentWnd = '<fieldset class="gscwndfs"><legend>Подсчёт баллов</legend>За файлы: <b>'+b_file.toFixed(2)+'</b><br>За сообщения на форуме: <b>'+b_forum.toFixed(2)+'</b><br>За коментарии: <b>'+b_coment.toFixed(2)+'</b><br>За новости: <b>'+b_news.toFixed(2)+'</b><br>За репутацию: <b>'+b_rep.toFixed(2)+'</b><br>За награды: <b>'+b_award.toFixed(2)+'</b><br>Потрачено: <b>'+b_minus.toFixed(2)+'</b></fieldset><fieldset class="gscwndfs"><legend>Баллы</legend>Общее число баллов: <b>'+result.toFixed(2)+'</b></fieldset>';
+ openGscModWnd(170,450,b_contentWnd,'Баллы пользователя','#575b5b');
+ }
+     function ballsToConsiderReturn(){
+	var b_rep = $_REPUTATION$*0.6;
+	var b_file = $_LOAD_ENTRIES$*1.2;
+	var b_news = $_NEWS_ENTRIES$*1.4;
+	var b_forum = $_FORUM_ENTRIES$*0.9;
+	var b_award = $AWARDS$*1.0;
+	var b_coment = $_COM_ENTRIES$*0.6;
+	var b_ban = $_BAN_RATING$*40;
+	var b_minus = $_BOARD_ENTRIES$;
+	var result = b_rep + b_file + b_news + b_forum + b_award + b_coment + b_ban - b_minus;
+	return result.toFixed(2);
+}
+//begin
+var showAlphaCounter = 0;
+alpha = new Array();
+alpha[10] = '1.0';
+alpha[9] = '0.9';
+alpha[8] = '0.8';
+alpha[7] = '0.7';
+alpha[6] = '0.6';
+alpha[5] = '0.5';
+alpha[4] = '0.4';
+alpha[3] = '0.3';
+alpha[2] = '0.2';
+alpha[1] = '0.1';
+alpha[0] = '0.0';
+function showAlpha(objid,showhide){
+	var obj = document.getElementById(objid);
+	if(showhide){
+		//Show
+		if(showAlphaCounter == 0){obj.style.display = 'block';obj.style.opacity = '0.0'}
+	if(showAlphaCounter < 11){
+		showAlphaCounter = showAlphaCounter + 1;
+		obj.style.opacity = alpha[showAlphaCounter];
+		setTimeout('showAlpha("'+objid+'",1)',25);
+	}else{
+		showAlphaCounter = 0;
+	}
+	}else{
+		//Hide
+		//alert(1-0.4);
+		if(showAlphaCounter == 0){alpha.reverse();obj.style.opacity = '1.0'}
+		if(showAlphaCounter < 11){
+			showAlphaCounter = showAlphaCounter + 1;
+			obj.style.opacity = alpha[showAlphaCounter];
+			setTimeout('showAlpha("'+objid+'",0)',25);
+		}else{
+			showAlphaCounter = 0;
+			obj.style.display = 'none';
+			alpha.reverse();
+			obj.parentNode.removeChild(obj);
+		}
+	}
+}
+//.end
+function b_help(){
+	var b_contentWndHelp = '<fieldset class="gscwndfs"><legend>Начисление баллов</legend>1 файл = <b>1.2</b> балла<br>1 сообщение на форуме = <b>0.9</b> балла<br>1 комментарий = <b>0.6</b> балла<br>1 новость = <b>1.4</b> балла<br>За 1 репутации = <b>0.6</b> балла<br>1 награда = <b>1.0</b> балла</fieldset><fieldset class="gscwndfs"><legend>Обмен баллов</legend>-20% замечаний стоит <b>120</b> баллов<br>Сменить ник на форуме стоит <b>60</b> баллов<br>Сменить титул стоит <b>40</b> баллов</fieldset><a href="http://www.gsc-mod.ru/forum/17-1428" class="hlpBtnBallObmen">Обменять баллы</a>';
+	openGscModWnd(210,450,b_contentWndHelp,'Обмен баллов','#575b5b');
+}
+</script>
+<!--/баллы-->
+  <script type="text/javascript">
+	var omo;
+	var mapZone;
+	var timerMoveMap;
+	var bonus = 0;
+	var scoreTeam1 = 0;
+	var scoreTeam2 = 0;
+	function cursorOver(evt){
+		if(this.alt){
+			if(omo){
+				omo.style.left = evt.pageX+15+'px';
+				omo.style.top = evt.pageY+20+'px';
+			}else{
+				omo = document.createElement("DIV")
+				document.body.appendChild(omo);
+				omo.id = 'newTitle';
+				omo.style.left = evt.pageX+15+'px';;
+				omo.style.top = evt.pageY+20+'px';
+				omo.innerHTML = this.alt;
+			}
+		}
+	}
+	function cursorOut(){
+		if(omo){
+		omo.parentNode.removeChild(omo);
+		omo = undefined;
+		}
+	}
+	function activeCalculator(){
+		document.getElementById('points').style.display = 'none';
+		document.getElementById('map').style.display = 'none';
+		document.getElementById('calculator').style.display = 'block';
+		document.getElementById('interfacemain').style.display = 'none';
+		document.getElementById('calcUserActive').style.backgroundColor = '#222627';
+		document.getElementById('invUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('infoUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('communityUserActive').style.backgroundColor = '#1a1e1f';
+		//addWarior();
+	}
+	function activeMap(){
+		mapZone = document.getElementById('zoneMap');
+		mapZone.x = 0;
+		mapZone.style.left = '0px';
+		mapZone.y = 0;
+		mapZone.style.top = '0px';
+		document.getElementById('map').style.display = 'block';
+		document.getElementById('points').style.display = 'none';
+		document.getElementById('calculator').style.display = 'none';
+		document.getElementById('interfacemain').style.display = 'none';
+		document.getElementById('infoUser').style.display = 'none';
+		document.getElementById('equipment').style.display = 'none';
+		document.getElementById('hwd').style.display = 'none';
+		document.getElementById('invUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('infoUserActive').style.backgroundColor = '#1a1e1f'; //#222627
+		document.getElementById('calcUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('communityUserActive').style.backgroundColor = '#1a1e1f';
+			//----------------
+			document.getElementById('KordonNovizeLagerDiv').className = kordon.NovizeLager;
+			document.getElementById('KordonNovizeLagerDiv').alt = 'Лагерь новичков';
+			document.getElementById('KordonNovizeLagerDiv').onmousemove = cursorOver;
+			document.getElementById('KordonNovizeLagerDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('KordonATPDiv').className = kordon.ATP;
+			document.getElementById('KordonATPDiv').alt = 'АТП';
+			document.getElementById('KordonATPDiv').onmousemove = cursorOver;
+			document.getElementById('KordonATPDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('KordonBPDiv').className = kordon.BlockPost;
+			document.getElementById('KordonBPDiv').alt = 'Южный блокпост';
+			document.getElementById('KordonBPDiv').onmousemove = cursorOver;
+			document.getElementById('KordonBPDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('KordonMostDiv').className = kordon.Most;
+			document.getElementById('KordonMostDiv').alt = 'Разрушенный мост';
+			document.getElementById('KordonMostDiv').onmousemove = cursorOver;
+			document.getElementById('KordonMostDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('KordonFermaDiv').className = kordon.Ferma;
+			document.getElementById('KordonFermaDiv').alt = 'Ферма';
+			document.getElementById('KordonFermaDiv').onmousemove = cursorOver;
+			document.getElementById('KordonFermaDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('KordonSvinoFermaDiv').className = kordon.SvinoFerma;
+			document.getElementById('KordonSvinoFermaDiv').alt = 'Свиноферма';
+			document.getElementById('KordonSvinoFermaDiv').onmousemove = cursorOver;
+			document.getElementById('KordonSvinoFermaDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('KordonSBPDiv').className = kordon.SBP;
+			document.getElementById('KordonSBPDiv').alt = 'Северный блокпост';
+			document.getElementById('KordonSBPDiv').onmousemove = cursorOver;
+			document.getElementById('KordonSBPDiv').onmouseout = cursorOut;
+			//----------------Свалка:
+			document.getElementById('SvalkaDepoDiv').className = svalka.Depo;
+			document.getElementById('SvalkaDepoDiv').alt = 'Депо';
+			document.getElementById('SvalkaDepoDiv').onmousemove = cursorOver;
+			document.getElementById('SvalkaDepoDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('SvalkaBaraholkaDiv').className = svalka.Baraholka;
+			document.getElementById('SvalkaBaraholkaDiv').alt = 'Барахолка';
+			document.getElementById('SvalkaBaraholkaDiv').onmousemove = cursorOver;
+			document.getElementById('SvalkaBaraholkaDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('BlockPostBarDiv').className = svalka.BlockpostBar;
+			document.getElementById('BlockPostBarDiv').alt = 'Блокпост';
+			document.getElementById('BlockPostBarDiv').onmousemove = cursorOver;
+			document.getElementById('BlockPostBarDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('GarbageAutoDiv').className = svalka.GarbageAuto;
+			document.getElementById('GarbageAutoDiv').alt = 'Кладбище техники';
+			document.getElementById('GarbageAutoDiv').onmousemove = cursorOver;
+			document.getElementById('GarbageAutoDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('LagerZaTrubamiDiv').className = svalka.LagerZaTrubami;
+			document.getElementById('LagerZaTrubamiDiv').alt = 'Укрытие за трубами';
+			document.getElementById('LagerZaTrubamiDiv').onmousemove = cursorOver;
+			document.getElementById('LagerZaTrubamiDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('OstanovkaDiv').className = svalka.Ostanovka;
+			document.getElementById('OstanovkaDiv').alt = 'Остановка';
+			document.getElementById('OstanovkaDiv').onmousemove = cursorOver;
+			document.getElementById('OstanovkaDiv').onmouseout = cursorOut;
+			//-------------------
+			document.getElementById('DorogaNaKordonDiv').className = svalka.DorogaNaKordon;
+			document.getElementById('DorogaNaKordonDiv').alt = 'Дорога на кордон';
+			document.getElementById('DorogaNaKordonDiv').onmousemove = cursorOver;
+			document.getElementById('DorogaNaKordonDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('LagerForestDiv').className = svalka.LagerForest;
+			document.getElementById('LagerForestDiv').alt = 'Лагерь  лесу';
+			document.getElementById('LagerForestDiv').onmousemove = cursorOver;
+			document.getElementById('LagerForestDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('ZavodRostokDiv').className = bar.ZavodRostok;
+			document.getElementById('ZavodRostokDiv').alt = 'Завод Росток';
+			document.getElementById('ZavodRostokDiv').onmousemove = cursorOver;
+			document.getElementById('ZavodRostokDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('WildTerritoryDiv').className = bar.WildTerritory;
+			document.getElementById('WildTerritoryDiv').alt = 'Дикая территория';
+			document.getElementById('WildTerritoryDiv').onmousemove = cursorOver;
+			document.getElementById('WildTerritoryDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('AgropromDiv').className = src.Agroprom;
+			document.getElementById('AgropromDiv').alt = 'НИИ Агропром';
+			document.getElementById('AgropromDiv').onmousemove = cursorOver;
+			document.getElementById('AgropromDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('FabrikaDiv').className = src.Fabrika;
+			document.getElementById('FabrikaDiv').alt = 'Фабрика';
+			document.getElementById('FabrikaDiv').onmousemove = cursorOver;
+			document.getElementById('FabrikaDiv').onmouseout = cursorOut;
+			//-------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			document.getElementById('DomNaBoLOTEDiv').className = src.DomNaBolote;
+			document.getElementById('DomNaBoLOTEDiv').alt = 'Дом на болоте';
+			document.getElementById('DomNaBoLOTEDiv').onmousemove = cursorOver;
+			document.getElementById('DomNaBoLOTEDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('DorogaNaJantarDiv').className = jantar.DorogaNaJantar;
+			document.getElementById('DorogaNaJantarDiv').alt = 'Дорога на янтарь';
+			document.getElementById('DorogaNaJantarDiv').onmousemove = cursorOver;
+			document.getElementById('DorogaNaJantarDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('BunkerUchenihDiv').className = jantar.BunkerUchenih;
+			document.getElementById('BunkerUchenihDiv').alt = 'Бункер учёных';
+			document.getElementById('BunkerUchenihDiv').onmousemove = cursorOver;
+			document.getElementById('BunkerUchenihDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('VertoletDiv').className = jantar.Vertolet;
+			document.getElementById('VertoletDiv').alt = 'Упавший вертолёт';
+			document.getElementById('VertoletDiv').onmousemove = cursorOver;
+			document.getElementById('VertoletDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('IslandDiv').className = jantar.Island;
+			document.getElementById('IslandDiv').alt = 'Островок на болоте';
+			document.getElementById('IslandDiv').onmousemove = cursorOver;
+			document.getElementById('IslandDiv').onmouseout = cursorOut;
+			//----------------
+			document.getElementById('BusDiv').className = jantar.Bus;
+			document.getElementById('BusDiv').alt = 'Старый автобус';
+			document.getElementById('BusDiv').onmousemove = cursorOver;
+			document.getElementById('BusDiv').onmouseout = cursorOut;
+			//----------------
+			
+	}
+	var timeMoveMap = 50;
+	var stepMoveMap = 10;
+	function moveMapeToTop(){
+		if(mapZone.y > -1548){
+			mapZone.y -= stepMoveMap;
+			mapZone.style.top = mapZone.y+'px';
+			timerMoveMap = setTimeout('moveMapeToTop()',timeMoveMap);
+		}
+	}
+	function moveMapeToLeft(){
+		if(mapZone.x > -1128){
+			mapZone.x -= stepMoveMap;
+			mapZone.style.left = mapZone.x+'px';
+			timerMoveMap = setTimeout('moveMapeToLeft()',timeMoveMap);
+		}
+	}
+	function moveMapeToBot(){
+		if(mapZone.y < 0){
+			mapZone.y += stepMoveMap;
+			mapZone.style.top = mapZone.y+'px';
+			timerMoveMap = setTimeout('moveMapeToBot()',timeMoveMap);
+		}
+	}
+	function moveMapeToRight(){
+		if(mapZone.x < 0){
+			mapZone.x += stepMoveMap;
+			mapZone.style.left = mapZone.x+'px';
+			timerMoveMap = setTimeout('moveMapeToRight()',timeMoveMap);
+		}
+	}
+	function removeTimerMoveMap(){
+		clearTimeout(timerMoveMap);
+	}
+	function activeInfo(){
+		document.getElementById('points').style.display = 'none';
+		document.getElementById('calculator').style.display = 'none';
+		document.getElementById('map').style.display = 'none';
+		document.getElementById('interfacemain').style.display = 'block';
+		document.getElementById('infoUser').style.display = 'block';
+		document.getElementById('equipment').style.display = 'none';
+		document.getElementById('hwd').style.display = 'none';
+		document.getElementById('b_divWrite').style.display = 'block';
+		document.getElementById('invUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('infoUserActive').style.backgroundColor = '#222627';
+		document.getElementById('calcUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('communityUserActive').style.backgroundColor = '#1a1e1f';
+	}
+	function activePoints(){
+		document.getElementById('points').style.display = 'block';
+		document.getElementById('calculator').style.display = 'none';
+		document.getElementById('map').style.display = 'none';
+		document.getElementById('interfacemain').style.display = 'none';
+		document.getElementById('infoUser').style.display = 'none';
+		document.getElementById('equipment').style.display = 'none';
+		document.getElementById('communityUserActive').style.backgroundColor = '#222627';
+		document.getElementById('calcUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('invUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('infoUserActive').style.backgroundColor = '#1a1e1f';
+		getScore();
+	}
+	function typeBonus(type){
+		if(type=='battle'){bonus = 0}
+		if(type=='attackBase'){bonus = 1000}
+		if(type=='attackLager'){bonus = 500}
+	}
+	function luck(){
+		if(document.all.lucker.checked){
+			var rnd = Math.random();
+			var rnd2 = rnd;
+			rnd = Math.round(rnd);
+			rnd2 = Math.round(rnd2*1536);
+			if(rnd==0){scoreTeam1 += rnd2}
+			if(rnd==1){scoreTeam2 += rnd2}
+			//alert(rnd+'=>'+rnd2);
+		}
+	}
+	function removeWarrior(){
+		var usersTeam1 = document.getElementById('usersTeam1');
+		var usersTeam2 = document.getElementById('usersTeam2');
+		usersTeam1.removeChild(usersTeam1.lastChild);
+		usersTeam2.removeChild(usersTeam2.lastChild);
+	}
+	function addWarior(){
+		var usersTeam1 = document.getElementById('usersTeam1');
+		var usersTeam2 = document.getElementById('usersTeam2');
+		var addWarDiv = document.createElement('div');
+			addWarDiv.className = 'warUser';
+			usersTeam1.appendChild(addWarDiv);
+		var addWarInpUserName = document.createElement('input');
+			addWarInpUserName.className = 'inputName';
+			addWarInpUserName.name = 't1-user';
+			addWarInpUserName.type = 'text';
+			addWarInpUserName.value = 'Имя';
+			addWarInpUserName.onclick = function (){this.select()};
+			addWarDiv.appendChild(addWarInpUserName);
+		var addWarInpHealth = document.createElement('input');
+			addWarInpHealth.className = 'inputHealth';
+			addWarInpHealth.name = 't1-health';
+			addWarInpHealth.type = 'text';
+			addWarInpHealth.value = 'Здоровье';
+			addWarInpHealth.onclick = function (){this.select()};
+			addWarDiv.appendChild(addWarInpHealth);
+		var addWarInpDefence = document.createElement('input');
+			addWarInpDefence.className = 'inputDefence';
+			addWarInpDefence.name = 't1-defence';
+			addWarInpDefence.type = 'text';
+			addWarInpDefence.value = 'Броня';
+			addWarInpDefence.onclick = function (){this.select()};
+			addWarDiv.appendChild(addWarInpDefence);
+		var addWarInpStrong = document.createElement('input');
+			addWarInpStrong.className = 'inputStrong';
+			addWarInpStrong.name = 't1-strong';
+			addWarInpStrong.type = 'text';
+			addWarInpStrong.value = 'Сила';
+			addWarInpStrong.onclick = function (){this.select()};
+			addWarDiv.appendChild(addWarInpStrong);
+			//-------------------
+		var addWarDiv2 = document.createElement('div');
+			addWarDiv2.className = 'warUser';
+			usersTeam2.appendChild(addWarDiv2);
+		var addWarInpUserName2 = document.createElement('input');
+			addWarInpUserName2.className = 'inputName';
+			addWarInpUserName2.name = 't2-user';
+			addWarInpUserName2.type = 'text';
+			addWarInpUserName2.value = 'Имя';
+			addWarInpUserName2.onclick = function (){this.select()};
+			addWarDiv2.appendChild(addWarInpUserName2);
+		var addWarInpHealth2 = document.createElement('input');
+			addWarInpHealth2.className = 'inputHealth';
+			addWarInpHealth2.name = 't2-health';
+			addWarInpHealth2.type = 'text';
+			addWarInpHealth2.value = 'Здоровье';
+			addWarInpHealth2.onclick = function (){this.select()};
+			addWarDiv2.appendChild(addWarInpHealth2);
+		var addWarInpDefence2 = document.createElement('input');
+			addWarInpDefence2.className = 'inputDefence';
+			addWarInpDefence2.name = 't2-defence';
+			addWarInpDefence2.type = 'text';
+			addWarInpDefence2.value = 'Броня';
+			addWarInpDefence2.onclick = function (){this.select()};
+			addWarDiv2.appendChild(addWarInpDefence2);
+		var addWarInpStrong2 = document.createElement('input');
+			addWarInpStrong2.className = 'inputStrong';
+			addWarInpStrong2.name = 't2-strong';
+			addWarInpStrong2.type = 'text';
+			addWarInpStrong2.value = 'Сила';
+			addWarInpStrong2.onclick = function (){this.select()};
+			addWarDiv2.appendChild(addWarInpStrong2);
+	}
+	function frpgCalc(){
+		scoreTeam1 = 0;
+		scoreTeam2 = 0;
+		if(document.all["t1-health"].length){
+			for(i=0;i < document.all["t1-health"].length;i++){
+				scoreTeam1 += parseInt(document.all["t1-health"][i].value);
+				scoreTeam1 += parseInt(document.all["t1-defence"][i].value)/1.2;
+				scoreTeam1 += parseInt(document.all["t1-strong"][i].value)/0.9;
+				scoreTeam2 += parseInt(document.all["t2-health"][i].value);
+				scoreTeam2 += parseInt(document.all["t2-defence"][i].value)/1.2;
+				scoreTeam2 += parseInt(document.all["t2-strong"][i].value)/0.9;
+			}
+		}else{
+			scoreTeam1 += parseInt(document.all["t1-health"].value);
+			scoreTeam1 += parseInt(document.all["t1-defence"].value)/1.2;
+			scoreTeam1 += parseInt(document.all["t1-strong"].value)/0.9;
+			scoreTeam2 += parseInt(document.all["t2-health"].value);
+			scoreTeam2 += parseInt(document.all["t2-defence"].value)/1.2;
+			scoreTeam2 += parseInt(document.all["t2-strong"].value)/0.9;
+		}
+		luck();
+		scoreTeam2 += bonus;
+		scoreTeam2 = Math.round(scoreTeam2);
+		scoreTeam1 = Math.round(scoreTeam1);
+		//alert(scoreTeam1+'<1!==!2>'+scoreTeam2);//Вывод кол-ва очков
+		if(isNaN(scoreTeam1) || isNaN(scoreTeam2)){alert('Неверно заполнены поля!')}else{
+			if(scoreTeam1>scoreTeam2){alert('Побеждает '+document.all["team1"].value);}
+			if(scoreTeam2>scoreTeam1){alert('Побеждает '+document.all["team2"].value);}
+			if(scoreTeam1==scoreTeam2){alert('Ничья!');}
+		}
+	}
+	function activeEquipment(){
+		document.getElementById('points').style.display = 'none';
+		document.getElementById('calculator').style.display = 'none';
+		document.getElementById('map').style.display = 'none';
+		document.getElementById('interfacemain').style.display = 'block';
+		document.getElementById('infoUser').style.display = 'none';
+		document.getElementById('equipment').style.display = 'block';
+		document.getElementById('hwd').style.display = 'block';
+		document.getElementById('b_divWrite').style.display = 'none';
+		document.getElementById('invUserActive').style.backgroundColor = '#222627';
+		document.getElementById('calcUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('infoUserActive').style.backgroundColor = '#1a1e1f';
+		document.getElementById('communityUserActive').style.backgroundColor = '#1a1e1f';
+		/*<-- Begin -->*/
+			//Получаем слоты
+			var xpu = document.getElementById('experience-border');
+			xpu.onmousemove = cursorOver;
+			xpu.onmouseout = cursorOut;
+			xpu.alt = "Опыт: $_BLOG_ENTRIES$";
+			var weapon1 = document.getElementById('weapon1');
+			weapon1.onmousemove = cursorOver;
+			weapon1.onmouseout = cursorOut;
+			var weapon2 = document.getElementById('weapon2');
+			weapon2.onmousemove = cursorOver;
+			weapon2.onmouseout = cursorOut;
+			var modernOpt = document.getElementById('opt');
+			modernOpt.alt = 'Оптика отсутствует';
+			modernOpt.onmousemove = cursorOver;
+			modernOpt.onmouseout = cursorOut;
+			var modernGl = document.getElementById('gl');
+			modernGl.alt = 'Глушитель отсутствует';
+			modernGl.onmousemove = cursorOver;
+			modernGl.onmouseout = cursorOut;
+			var modernBb = document.getElementById('bb');
+			modernBb.alt = 'Бронебойные патроны не заряжены';
+			modernBb.onmousemove = cursorOver;
+			modernBb.onmouseout = cursorOut;
+			var modernGr = document.getElementById('gr');
+			modernGr.alt = 'Подствольник отсутствует';
+			modernGr.onmousemove = cursorOver;
+			modernGr.onmouseout = cursorOut;
+			var notOpt = 0;
+			var notGl = 0;
+			var notBb = 0;
+			var notGr = 0;
+			var mbody = document.getElementById('body');
+			mbody.onmousemove = cursorOver;
+			mbody.onmouseout = cursorOut;
+			var art1 = document.getElementById('art1');
+			art1.onmousemove = cursorOver;
+			art1.onmouseout = cursorOut;
+			var art2 = document.getElementById('art2');
+			art2.onmousemove = cursorOver;
+			art2.onmouseout = cursorOut;
+			var art3 = document.getElementById('art3');
+			art3.onmousemove = cursorOver;
+			art3.onmouseout = cursorOut;
+			var art4 = document.getElementById('art4');
+			art4.onmousemove = cursorOver;
+			art4.onmouseout = cursorOut;
+			//Получили слоты
+			//Задаём переменные для подсчёта очков
+			var group;
+				if($_GROUP_ID$ == 6){group = 'dolg';}
+				if($_GROUP_ID$ == 5){group = 'freedom';}
+				if(($_GROUP_ID$ !== 6) && ($_GROUP_ID$ !== 5)){group = 'stalkers';}
+			
+			var health = 600; //Здоровье - увеличивается за счёт артефактов
+			var defence = 0;  //Броня - зависит от брони
+			var weapon = 0;	  //Боевая сила - показатель оценки мощьности оружия в 1м и во втором слотах.
+			
+			//Запрашиваем у сервера данные о пользователе
+			var rep = $_REPUTATION$;//Репутация
+			var fPost = $_FORUM_ENTRIES$;
+			var awards = $AWARDS$;
+			var xp = $_BLOG_ENTRIES$;
+			
+			//Задали переменные для подсчёта очков
+			//Определяем содержимое "art1"
+				if((9 < rep) && (rep < 25)){art1.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ash/1.png')";health+=50;art1.alt = '<div class="myTit">Искра</div>Этот артефакт самый распространённый среди новичков, особо сильными свойствами он не обладает но многие говорят что раны начинают заживать быстрее.';}
+				if((24 < rep) && (rep < 45)){art1.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ash/2.png')";health+=100;art1.alt = '<div class="myTit">Желчь</div>От этого артефакта исходит желтоватое свечение, некоторые утверждают что мелкие раны заживают как на собаке, но серьёзные травмы он вылечить не в состоянии.';}
+				if((44 < rep) && (rep < 80)){art1.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ash/3.png')";health+=150;art1.alt = '<div class="myTit">Льдина</div>Воздействие этого артефакта на организм человека недоконца изучены, биологи говорят что он влияет на сворачиваемость крови и человек становиться выносливее к ранам.';}
+				if((79 < rep) && (rep < 200)){art1.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ash/4.png')";health+=200;art1.alt = '<div class="myTit">Плесень</div>Артефакт испускает зеленоватое свечение на которое можно смотреть часами, говорят что глядя на это свечение многие исцеляються даже от неизлечимых болезней.';}
+				if(199 < rep){art1.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ash/5.png')";health+=250;art1.alt = '<div class="myTit">Компас</div>Компас — легендарный артефакт. Находили его только единицы. Оказывает благоприятное воздействие на мышечные ткани обладателя. Своё название получил из-за недоказанного и основанного на слухах свойства — показывать "чистый" путь в поле аномалий.';}
+			//Определили содержимое "art1"
+			//Определяем содержимое "art2"
+				if((14 < rep) && (rep < 35)){art2.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asd/1.png')";defence+=20;art2.alt = '<div class="myTit">Горгона</div>Весьма распространённый артефакт, с немного неприятным свойством: кожа носителя грубеет, однако это свойство обеспечиват некоторую защиту от лишних ран.';}
+				if((34 < rep) && (rep < 60)){art2.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asd/2.png')";defence+=60;art2.alt = '<div class="myTit">Звезда Фантома</div>Артефакт оказывает непонятное воздействие на ткани в которые одет сталкер, значительно увеличивая их плотность.';}
+				if((59 < rep) && (rep < 100)){art2.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asd/3.png')";defence+=120;art2.alt = '<div class="myTit">Песчаник</div>Артефакт обладает непонятными свойствами, учёные немогут обьяснить почему, но он незначительно гасит энергию пули.';}
+				if((99 < rep) && (rep < 300)){art2.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asd/4.png')";defence+=160;art2.alt = '<div class="myTit">Клетка</div>Артефакт создаёт небольшое поле вокруг обьекта с которым соприкасаеться, образуемое поле значительно препятствует всем обьектам движушимся с большой скоростью.';}
+				if(299 < rep){art2.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asd/5.png')";defence+=200;art2.alt = '<div class="myTit">Сфера</div>Немногие нашедшие этот артефакт рассказывают истории об уникальном везении, будто при приближении к ним пули изменяют свою траекторию. Учёные предпологают что артефакт создаёт некое электромагнитное поле вокруг своего владельца.';}
+			//Определили содержимое "art2"
+			//Определяем содержимое "art3"
+				if((19 < rep) && (rep < 40)){art3.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asx/1.png')";health+=25;defence+=10;art3.alt = '<div class="myTit">Инферно</div>Многие уверены что этот кусок камня не даёт никакиой пользы, однако учёные утверждают что он ускоряет заживание ран и кожа становиться более грубой.';}
+				if((39 < rep) && (rep < 70)){art3.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asx/2.png')";health+=50;defence+=30;art3.alt = '<div class="myTit">Генератор</div>Сталкеры заполучившие такой артефакт рассказывают о том как быстро затягиваются раны, а пули теряют свою кинетическую энергию при приближении к телу.';}
+				if((69 < rep) && (rep < 120)){art3.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asx/3.png')";health+=75;defence+=60;art3.alt = '<div class="myTit">Кокон</div>Учёные уже давно немогут определить природу уникальных свойств этого артефакта, но говорят что он способствует заживлению ран и каким то образом замедляет скорость пули летящей в сталкера.';}
+				if((119 < rep) && (rep < 300)){art3.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asx/4.png')";health+=100;defence+=80;art3.alt = '<div class="myTit">Падший Ангел</div>Природа происхождения этого артефакта - загадка, но он обладает свойством заживлять давольно тяжелые раны и создаёт магнитное поле вокруг владельца которое отклоняет пули от заданной траектории.';}
+				if(299 < rep){art3.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/asx/5.png')";health+=125;defence+=100;art3.alt = '<div class="myTit">Токсик</div>Данный артефакт обладает весьма явновыраженныым свойством заживления ран, учёные доказали что этот артефакт создаёт поле неизвестного происхождения вокруг носителя, при попадании в это поле некоторые пули мнгновенно теряют свою кинетическую энергию и падают на землю.';}
+			//Определили содержимое "art3"
+			//Определяем содержимое "art4"
+				if((24 < rep) && (rep < 45)){art4.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ass/1.png')";weapon+=10;art4.alt = '<div class="myTit">Плеть</div>Артефакт давольно легко найти на юге зоны, его свойства увеличивает внимательность владельца что слегка помогает в бою.';}
+				if((44 < rep) && (rep < 80)){art4.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ass/2.png')";weapon+=40;art4.alt = '<div class="myTit">Фонтан</div>Артефакт излучает приятное сияние, некоторые замечают что он слегка повышает внимательность и реакцию что канечно наземенимо в условиях зоны.';}
+				if((79 < rep) && (rep < 150)){art4.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ass/3.png')";weapon+=80;art4.alt = '<div class="myTit">Паутина</div>Артефакт беловатого цвета, сталкеры нашедшие его говорят о том что они стали намного более удачливы в сражениях и стали намного лучше замечать аномалии.';}
+				if((149 < rep) && (rep < 500)){art4.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ass/4.png')";weapon+=120;art4.alt = '<div class="myTit">Серафим</div>Учёные утверждают что каким то образом этот артефакт воздействует на оружие и повышает начальную скорость пули, а сталкеры поговаривают что он позволяет им сосредоточиться в бою.';}
+				if(499 < rep){art4.style.backgroundImage = "url('/xdstyle-2012/frpg/arts/ass/5.png')";weapon+=150;art4.alt = '<div class="myTit">Рубин</div>Те кому посчастливилось найти этот артефакт говорят что без его свойств в зоне не обойтись, он помогает сосредоточиться а так же увелиивает реакцию и внимательность владельца.';}
+			//Определили содержимое "art4"
+			//Определяем содержимое "mbody" (комбинезоны) - group -
+					var stEquip = true;
+					//Если репутация пользователя < 0 то не выдаём ему экиперовку. Не помню хотел ли я не выдавать ещё и оружие...
+					if(rep < 0){
+						mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/sviter.gif')";mbody.alt = '<div class="myTit">Бабушкин свитер</div>Всю одежду с вас сняли гопники хD';
+					}else{
+						if(($_GROUP_ID$ == 6) || ($_USER_ID$ == 659)){
+							stEquip = false;
+							if((fPost >= 0) && (fPost < 64)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/dolg/1.png')";mbody.alt = '<div class="myTit">Кожанка Долга</div>Кожанная куртка весьма плохой выбор для военных действий в такой куртке лучше избегать стычек группировок';defence+=100}
+							if((fPost > 63) && (fPost < 150)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/dolg/2.png')";mbody.alt = '<div class="myTit">ПС3-9Д</div>Производится одним из оборонных киевских НИИ на заказ группировки "Долг". Простота и надёжность базовой модели ПС3-9 в сочетании с новыми материалами предоставляют хорошую защиту от различных вредных воздействий, включая огнестрельные повреждения. Из-за отсутствия защиты дыхания бронежилет требует доработки. ';defence+=300}
+							if((fPost > 149) && (fPost < 400)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/dolg/3.png')";mbody.alt = '<div class="myTit">СКАТ-910М</div>Переделанный умельцами группировки Долг армейский бронекостюм СКАТ-9М, с весьма неплохими дороботками.Предоставляет великолепную защиту от пулевого и осколочного попадания, при этом не снижает подвижности солдата. В наличии сбалансированная система защиты от аномального воздействия.';defence+=600}
+							if((fPost > 399) && (fPost < 1000)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/dolg/4.png')";mbody.alt = '<div class="myTit">ПС3-9Мд</div>Отличный защитный костюм для Зоны. Сталкеры ценят его за сочетание отличных противоаномальных качеств и противопулевой защиты. В составе: комбинезон ПСЗ-9д, система дыхания с замкнутым циклом, встроенная система подавления действия аномальных полей. Представляет качественную защиту от пулевого и осколочного попадания. ';defence+=800}
+							if(fPost > 999){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/dolg/5.png')";mbody.alt = '<div class="myTit">Экзоскилет Долга</div>Самые лучшие техники Долга трудились над этим экзоскилетом, отличный выбор для любой ситуации.';defence+=1200;health+=175}
+						}
+						if(($_GROUP_ID$ == 5) || ($_USER_ID$ == 580)){
+							stEquip = false;
+							if((fPost >= 0) && (fPost < 64)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/freedom/1.png')";mbody.alt = '<div class="myTit">Кожанка Свободы</div>Кожанная куртка, такую носят неопытные бойцы Свободы, воевать в такой куртке противопоказано.';defence+=100}
+							if((fPost > 63) && (fPost < 150)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/freedom/2.png')";mbody.alt = '<div class="myTit">Ветер Свободы</div>Производимый ремесленниками группировки "Свобода" облегчённый комбинезон сталкера. Лёгкий армейский бронежилет плюс накладные усиливающие кевларовые пластины. Способен защитить от слабого оружия. Ткань комбинезона обработана специальным составом, повышающим сопротивление аномальной активности.';defence+=300}
+							if((fPost > 149) && (fPost < 400)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/freedom/3.png')";mbody.alt = '<div class="myTit">Страж Свободы</div>Производимый ремеслиниками группировки "Свобода" усиленный комбинезон сталкера. Средний армейский бронежилет плюс накладные усиливающие циркониевые элементы дают неплохую защиту от автоматных пуль и осколков на различных дистанциях. Материал костюма состоит из двух слоёв: специально обработанной кожи и ткани с асбестовой нитью. Даёт некоторую защиту от различных аномальных воздействий и радиации.';defence+=600}
+							if((fPost > 399) && (fPost < 1000)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/freedom/4.png')";mbody.alt = '<div class="myTit">Сева Свободы</div>Эффективная защита от радиации и биологических аномалий, а так же весьма неплохая защита от огнестрельных и осколочных повреждений. Отличный выбор для ведения боя в зараженной местности.';defence+=800}
+							if(fPost > 999){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/freedom/5.png')";mbody.alt = '<div class="myTit">Экзоскилет Свободы</div>Экзоскилет улучшенный техниками свободы, предоставляет хорошую защиту от огнестрельного оружия и осколков, а система замкнутого дыхания защищает в зонах хим заражения';defence+=1200;health+=175}
+						}
+						if(($_GROUP_ID$ == 7) || (stEquip)){
+							if((fPost >= 0) && (fPost < 64)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/stalkers/1.png')";mbody.alt = '<div class="myTit">Кожанная куртка</div>Обычная кожанная куртка наиболее эффективно защщищает от дождя, в этой куртке особо не повоюешь';defence+=100}
+							if((fPost > 63) && (fPost < 150)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/stalkers/2.png')";mbody.alt = '<div class="myTit">Сталкерский кобенизон</div>Производимый "народными умельцами" комбинезон сталкера представляет собой эффективное сочетание лёгкого армейского бронежилета комбинезона из прорезиненой ткани. Усилен за счёт встроенных кевларовых пластин. Неплохо защищает от слабого стрелкового оружия. В целом крайне недостаточен для глубоких рейдов и серьёзных операций в узлах Зоны. ';defence+=300}
+							if((fPost > 149) && (fPost < 400)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/stalkers/3.png')";mbody.alt = '<div class="myTit">Улучшенный комбинезон</div>Предоставляет великолепную защиту от пулевого и осколочного попадания, при этом не снижает подвижности солдата. В наличии сбалансированная система защиты от аномального воздействия. ';defence+=600}
+							if((fPost > 399) && (fPost < 1000)){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/stalkers/4.png')";mbody.alt = '<div class="myTit">Комбинезон "Сева"</div>Производимый одним из оборонных киевских НИИ данный комбинезон предоставляет отличную альтернативу другим сталкеровским комбинезонам, изготовленным в кустарных условиях. Представляет из себя отличное сочетание бронировонного комбинезона, системы дыхания с замкнутым циклом, а также встроенной системой подавления действия аномальных полей. За счёт удачного подбора материалов является хорошим выбором.';defence+=800}
+							if(fPost > 999){mbody.style.backgroundImage = "url('/xdstyle-2012/frpg/body/stalkers/5.png')";mbody.alt = '<div class="myTit">Сталкерский Экзоскилет</div>Данный экзоскелет относится третьему поколению. В нем устранены конструктивные недостатки, кардинально снижавшие подвижность, а так же усилена броня. Предоставляет великолепную защиту от пулевого и осколочного попадания';defence+=1200;health+=175}
+						}
+					}
+			//Определили содержимое "mbody" (комбинезоны)
+			//Определяем содержимое "weapon1" (1 слот оружия)
+				if((fPost >= 0) && (fPost < 40)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/0.gif')";weapon1.alt = '<div class="myTit">Нож</div>';weapon+=25}
+				if((fPost > 39) && (fPost < 120)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/1.gif')";weapon1.alt = '<div class="myTit">ПМ</div>Наиболее распространённый в зоне пистолет - наследие советской эпохи. Достаточно надёжный и дешёвый, отличается невысокой ёмкостью магазина при недостаточной мощности и неудовлетворительной кучности патрона. Основное оружие сталкера-новичка-неудачника. Отличное средство для распугивания ворон.';weapon+=50}
+				if((fPost > 119) && (fPost < 240)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/2.gif')";weapon1.alt = '<div class="myTit">Форт 12</div>Пистолет полицейского назначения украинского производства, пришедший на смену ПМ. Обладает лучшими по сравнению с последним точностью боя, эргономикой и более вместительным магазином, однако менее надёжен.';weapon+=80}
+				if((fPost > 239) && (fPost < 320)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/3.gif')";weapon1.alt = '<div class="myTit">Walther P99</div>Отличный пистолет немецкого производства, отличающийся надёжностью, ёмким магазином и хорошей точностью боя, особенно в данном варианте - под 9-миллиметровый патрон Parabellum';weapon+=120}
+				if((fPost > 319) && (fPost < 480)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/4.gif')";weapon1.alt = '<div class="myTit">Кора 919</div>Классический автоматический "кольт", с честью прошедший все вооружённые конфликты ХХ века и уверенно вошедший в новое столетие. Невысокая ёмкость магазина в определённой степени компенсируется использованием мощного патрона.';weapon+=220}
+				if((fPost > 479) && (fPost < 560)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/5.gif')";weapon1.alt = '<div class="myTit">USP.45 Compact</div>Солидный ствол. Немецкое качество и надёжность. Компактное оружие ближнего боя. Пользуется особой популярностью среди ветеранов Зоны.';weapon+=300}
+				if((fPost > 559) && (fPost < 640)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/6.gif')";weapon1.alt = '<div class="myTit">SIG-Sauer P220</div>Модель, разработанная ещё в 1975 году, но до сих пор популярна во всём мире. Магазин недостаточно ёмкий, зато механизм надёжный, как швейцарские часы; вторым плюсом является использование мощного кольтовского патрона .45 калибра.';weapon+=340}
+				if((fPost > 639) && (fPost < 780)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/7.gif')";weapon1.alt = '<div class="myTit">Beretta 92FS</div>Состоит на вооружении вооружённых сил и полиции США, многих военизированных и правохранительных формирований во всём мире. Столь же популярна и у представителей преступного мира благодаря мощному патрону и большой ёмкости магазина.';weapon+=420}
+				if((fPost > 779) && (fPost < 980)){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/8.gif')";weapon1.alt = '<div class="myTit">Browning High Power Mk. III</div>Бельгийская игрушка. Это оружие считается одним из лучших пистолетов ХХ века. Надёжный, мощный, с хорошей кучностью стрельбы. Ёмкость магазина 13 патронов.';weapon+=580}
+				if(fPost > 979){weapon1.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot1/9.gif')";weapon1.alt = '<div class="myTit">Desert Eagle</div>Настоящая пушка для настоящих героев. Большая, тяжёлая и чрезвычайно убойная. Из-за цены и габаритов особой популярностью в Зоне не пользуется, всё таки не каждый день охотишься на слона. Возможно единичный экземпляр';weapon+=800}
+			//Определили содержимое "weapon1" (1 слот оружия)
+			//Определяем содержимое "weapon2" (2 слот оружия)
+				if((fPost >= 0) && (fPost < 30)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/1.gif')";weapon2.alt = '<div class="myTit">Обрез</div>"Ружьё ВМ 17, обрезанно". Значительно компактней и легче новой двустволки, но эффективен только в ближнем бою.';weapon+=60;notOpt = 1;notGl = 1;notGr = 1;}
+				if((fPost > 29) && (fPost < 55)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/2.gif')";weapon2.alt = '<div class="myTit">MP5</div>Одно из самых лучших в классе пистолетов-пулемётов оружие. В течении последних десятилетий ХХ века был принят на вооружение спецподразделений армии и полиции во многих странах мира.';weapon+=85;notGl = 1;notBb = 1;}
+				if((fPost > 54) && (fPost < 70)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/3.gif')";weapon2.alt = '<div class="myTit">ВМ 16</div>Охотничье ружьё - горизонталка. Довольно мощное, в самый раз для охоты.';weapon+=120;notOpt = 1;notGl = 1;notGr = 1;}
+				if((fPost > 69) && (fPost < 90)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/4.gif')";weapon2.alt = '<div class="myTit">MP-5NА3</div>Лёгкий, компактный, этот пистолет-пулемёт является настоящей находкой для начинающих сталкеров.';weapon+=145;notGl = 1;notBb = 1;}
+				if((fPost > 89) && (fPost < 110)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/5.gif')";weapon2.alt = '<div class="myTit">ТОСТ-34</div>Внутрикурковое двуствольное охотничье ружье с вертикально расположенными стволами "ТОЗ 34". Широко распространённое и ничем особо не примечательное охотничье ружьё - "вертикалка". ';weapon+=160;notOpt = 1;notGl = 1;notGr = 1;}
+				if((fPost > 109) && (fPost < 135)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/6.gif')";weapon2.alt = '<div class="myTit">Акм 74/2у</div>По своим габаритам и массе Акм 74/2У (укороченный) близок к пистолетам-пулемётам, однако он является представителем автоматов. Достоинства: малые габариты и довольно высокая пробивающая способность. Главные недостатки - малая прицельная дальность и склонность к быстрому перегреву при стрельбе очередями.';weapon+=210;notOpt = 1;notGr = 1;}
+				if((fPost > 134) && (fPost < 160)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/7.gif')";weapon2.alt = '<div class="myTit">АН-94 Абакан</div>Оружие элитных войск советской армии. Был разработан в качестве замены устаревшему Акм 74/2. В "Абакане" подвижны не только внутренние механизмы, но и вся ствольная коробка вместе со стволом, что позволяет снизить отдачу, тем самым значительно повысив точность боя.';weapon+=260;}
+				if((fPost > 159) && (fPost < 210)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/8.gif')";weapon2.alt = '<div class="myTit">Чейзер 13</div>"Winchester 1300". Гладкоствольное помповое ружьё американского производства, созданное для применения в самых неблагоприятных условиях и отличающееся высокой надёжностью. Все детали снабжены антикоррозийным покрытием.';weapon+=320;notOpt = 1;notGl = 1;notGr = 1;}
+				if((fPost > 209) && (fPost < 240)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/9.gif')";weapon2.alt = '<div class="myTit">Акм 74</div>Автомат складной образца 1974 года под патрон 5,45х39 мм. Представляет собой простое и надёжное оружие, хотя дешевизна в производстве несколько сказалась на удобстве использования и точности боя. В Зоне это основное оружие военных сталкеров и многих одиночек.';weapon+=360;}
+				if((fPost > 239) && (fPost < 280)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/10.gif')";weapon2.alt = '<div class="myTit">SIG 550</div>Одна из относительно новых швейцарских винтовок под патрон 5,56х45 мм SS 109. Точность, мягкая отдача и высокая надёжность данного оружия быстро завоевали ему самую широкую популярность.';weapon+=420;}
+				if((fPost > 279) && (fPost < 320)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/11.gif')";weapon2.alt = '<div class="myTit">СПСА 14</div>"Franchi SPAS-12 ". Гладкоствольное ружьё СПСА 14 было разработано в конце 1970-х в качестве универсального боевого оружия для полиции и штурмовых подразделений армии. Данное оружие отличают высокая надёжность и гибкость применения; с другой стороны, оно довольно массивно и сложно в устройстве.';weapon+=510;notOpt = 1;notGl = 1;notGr = 1;}
+				if((fPost > 319) && (fPost < 380)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/12.gif')";weapon2.alt = '<div class="myTit">Гроза</div>Данный ствол - отличная работа одного из сталкеров-умельцев, которому удалось переделать винтовку под более распространённый патрон 5.45.';weapon+=560;notGr = 2;}
+				if((fPost > 379) && (fPost < 440)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/13.gif')";weapon2.alt = '<div class="myTit">LR-300ML</div>Лёгкая винтовка с дальностью эффективного огня до 300 метров. Благодаря исключительно ровному спуску, высокой эргономике и небольшому весу данное оружие отличается высокой точностью боя, хотя высокая чувствительность к загрязнению делают её не всегда пригодной для использования в сложных полевых условиях.';weapon+=580}
+				if((fPost > 439) && (fPost < 520)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/14.gif')";weapon2.alt = '<div class="myTit">ГП 37</div>Штурмавая винтовка немецкого производства, представляющая собой первоклассный образец современного оружия - лёгкой, надёжной и эргономичной.';weapon+=620;notOpt = 2;notGr = 1;}
+				if((fPost > 519) && (fPost < 600)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/15.gif')";weapon2.alt = '<div class="myTit">СВУ</div>"СВУ". Более современный вариант винтовки, выполненной по компактной схеме "булл-пап". Очень хорош в дальних путешествиях по Зоне.';weapon+=680;notOpt = 2;notGl = 2;notGr = 1;}
+				if((fPost > 599) && (fPost < 680)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/16.gif')";weapon2.alt = '<div class="myTit">L85A2</div>После того, как эта винтовка была заменена армией Великобритании на немецкую ГП-37, она в большом количестве всплыла на чёрном рынке, а затем и в Зоне. Главным достоинством ИЛ 86 являются штатный 4х кратный прицел и высокая точность первого выстрела. При стрельбе очередями точность боя резко падает, а надёжность основных механизмов винтовки недостаточно высока.';weapon+=700;notOpt = 2;}
+				if((fPost > 679) && (fPost < 760)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/17.gif')";weapon2.alt = '<div class="myTit">ВАЛ</div>Создан на базе бесшумной снайперской винтовки "Винторез", от которой отличается складным прикладом, возможностью вести огонь очередями, а также более ёмким магазином. Изначально предназначался для применения спецподразделениями в условиях атаки, требующей бесшумной и беспламенной стрельбы.';weapon+=820;notOpt = 1;notGl = 2;notGr = 1;}
+				if((fPost > 759) && (fPost < 830)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/18.gif')";weapon2.alt = '<div class="myTit">FN2000</div>"FN2000 с подствольным 40-мм гранатомётом FN EGLM". Автоматно-гранатомётный комплекс с компьютеризованным прицелом-модулем управления огнём и 40-миллиметровым гранатомётом под заряды М209.';weapon+=910;notOpt = 2;notGr = 2;}
+				if((fPost > 829) && (fPost < 900)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/19.gif')";weapon2.alt = '<div class="myTit">СВД</div>"Снайперская Винтовка Драгунова (СВД)". Широко использовалась во всех боевых операциях, проводившихся советской и российской армиями с 1960-х. Зарекомендовала себя как исключительно надёжное и удобное в обращении оружие.';weapon+=1040;notOpt = 2;notGr = 1;}
+				if((fPost > 899) && (fPost < 1000)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/20.gif')";weapon2.alt = '<div class="myTit">ВСС "Винторез"</div>Винтовка специальная снайперская "Винторез". Предназначена для бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С расстояния 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровня оружие.';weapon+=1180;notOpt = 2;notGl = 2;notGr = 1;}
+				if((fPost > 999) && (fPost < 1150)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/21.gif')";weapon2.alt = '<div class="myTit">Бульдог-6</div>Гранатомёт револьверного типа. Иногда просто незаменим, в частности при очистке больших площадей от мутантов, нападении на охраняемые стационарные объекты, в бою с особо живучим тварями.';weapon+=1350;notOpt = 1;notGl = 1;notBb = 1;notGr = 1;}
+				if((fPost > 1149) && (fPost < 1220)){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/22.gif')";weapon2.alt = '<div class="myTit">РПГ-7у</div>Гранатомёт образца 1960-х, в огромном количестве оставшийся на армейских складах, откуда и попал в Зону. Редкое для сталкеров оружие: внушительные габариты и большой вес делают его не слишком популярным, хотя для некоторых заданий он просто незаменим.';weapon+=1600;notOpt = 2;notGl = 1;notGr = 1;}
+				if(fPost > 1219){weapon2.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/slot2/23.gif')";weapon2.alt = '<div class="myTit">Гаусс</div>	Сверхточное оружие, которое собрали конструкторы в Зоне. Работает почти бесшумно, поскольку для стрельбы используется энергия артефактов, а не пороховых газов. Несмотря на колоссальную мощность выстрела, отдача у гаусс-пушки очень невелика. По точности и убойной силе превосходит любое классическое стрелковое оружие.';weapon+=2000;notOpt = 2;notGl = 1;notBb = 1;notGr = 1;}
+			//Определили содержимое "weapon2" (2 слот оружия)
+			//Определяем содержимое weapon2 => "modern"
+				if((awards > 5) || (notOpt == 2)){if(notOpt !== 1){modernOpt.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/modern/opt_1.png')";weapon+=50;modernOpt.alt = 'Оптика установлена';}}
+				if((awards > 10) || (notGl == 2)){if(notGl !== 1){modernGl.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/modern/gl_1.png')";weapon+=25;modernGl.alt = 'Глушитель установлен';}}
+				if((awards > 20) || (notBb == 2)){if(notBb !== 1){modernBb.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/modern/bb_1.png')";weapon+=50;modernBb.alt = 'Заряжены бронебойные патроны';}}
+				if((awards > 35) || (notGr == 2)){if(notGr !== 1){modernGr.style.backgroundImage = "url('/xdstyle-2012/frpg/weapon/modern/gr_1.png')";weapon+=100;modernGr.alt = 'Подствольник установлен';}}
+			//Определили содержимое weapon2 => "modern"
+			//Высчитываем полосу опыта
+				/*
+				//Уровни, кэп да? ^_^
+				var lv1  = 600;
+				var lv2  = 1000;
+				var lv3  = 1600;
+				var lv4  = 2400;
+				var lv5  = 3200;
+				var lv6  = 4400;
+				var lv7  = 5800;
+				var lv8  = 7000;
+				var lv9  = 8600;
+				var lv10 = 10000;
+				*/
+				var userLevel = 0;//Нужно определить уровень
+				
+				var xpLine = document.getElementById('experience');// Полоса опыта
+				
+				var widthUneXP =  1000 / 400;
+				if(xp < 1001){var widthUneXP =  1000 / 400;xpLine.style.width = xp / widthUneXP;}// 1000 - Кол-во опыта показываемое на полосе / 400 - Ширина полосы.
+				if((xp > 1000) && (xp < 2001)){var widthUneXP =  1000 / 400;xpLine.style.width = (xp - 1000) / widthUneXP;}
+				if((xp > 2000) && (xp < 3001)){xpLine.style.width = (xp - 2000) / widthUneXP;}
+				if((xp > 3000) && (xp < 4001)){xpLine.style.width = (xp - 3000) / widthUneXP;}
+				if((xp > 4000) && (xp < 5001)){xpLine.style.width = (xp - 4000) / widthUneXP;}
+				if(xp > 5000){var widthUneXP =  99999 / 400;xpLine.style.width = xp / widthUneXP;}
+				
+			//Высчитали полосу опыта
+			//Прибавляем половину опыта к боевой силе
+				weapon  += xp / 2.4;
+				defence += xp / 3.0;
+				health  += xp / 5.4;
+			// Выводим результаты подсчёта очков игрока
+			document.all.strong.value  = Math.round(weapon);
+			document.all.health.value  = Math.round(health);
+			document.all.defence.value = Math.round(defence);
+		/*<-- End. -->*/
+	}
+  </script>
+ </head>
+ <body id="main-body">
+ <!--script type="text/javascript">if(true){window.resizeTo(1200,760);}</script-->
+ <div id="pdaProfileRamka">
+ <div class="screenPDA">
+ <div class="btnPdaNew2" id="communityUserActive"><a onclick="activePoints()" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;">Рейтинг</a></div>
+ <div class="btnPdaNew2" id="calcUserActive"><a onclick="activeCalculator()" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;">Калькулятор</a></div>
+ <div class="btnPdaNew2" id="invUserActive" valign="middle"><a onclick="activeEquipment()" style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;cursor:default">Экипировка</a></div>
+ <?if(($USER_GROUP$=="Designers") || ($USER_GROUP$=="Администратор"))?>
+  <div class="btnPdaNew" id="btnActiveMap" title="Карта зоны" onclick="activeMap()"><img src="/xdstyle-2012/btnMap1.png"></div>
+	 <div id="lvlupbtn" title="Повышение опыта +30" onclick="new _uWnd('cntEd','Повышение опыта',-280,100,{autosize:1,closeonesc:1,resize:0},{url:'/index/39-'+$_USER_ID$});setTimeout('var z = parseInt(document.getElementsByName(\'blog\')[0].value); z += 30;document.getElementsByName(\'blog\')[0].value = z;document.getElementById(\'submcntManF$uid\').click();',1000);return false;"></div>
+ <?endif?>
+ <div class="btnPdaNew2" id="infoUserActive"><a style="display:block;height:100%;text-shadow:none;padding-top:8px;padding-bottom:4px;cursor:default" onclick="activeInfo()">Информация</a></div>
+ <div class="btnPdaNew" id="btnEdit"><a href="$_CHANGE_DETAILS_URL$"><img src="/xdstyle-2012/setings_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnMail"><a href="$PM_URL$"><img src="/xdstyle-2012/mail_pda.png"></a></div>
+ <div class="btnPdaNew" id="btnUsers"><a href="http://www.gsc-mod.ru/index/8"><img src="/xdstyle-2012/profile_pda.png"></a></div>
+ <?if($USER_GROUP$=="Администратор")?><!--div class="btnPdaNew" id="btnTops"><img src="/xdstyle-2012/btnStat1.png"></div--><?endif?>
+ <div class="btnPdaNew" id="btnPower"><a onclick="window.close();" href="?id=0"><img src="/xdstyle-2012/power2.png"></a></div>
+ <div id="points" align="center" style="display:none;" class="interfacePM">
+	<table id="pointTable" cellspacing="1" cellpadding="3" style="margin-top:5px;width:99%" align="center">
+		<tr>
+			<td class="thComPoints" align="center" width="5%">№</td>
+			<td class="thComPoints" align="center">Имя</td>
+			<td class="thComPoints" align="center">Группировка</td>
+			<td class="thComPoints" align="center">Репутация</td>
+			<td class="thComPoints" align="center">Ранг</td>
+			<td class="thComPoints" align="center">Опыт</td>
+		</tr>
+		$MYINF_15$
+		<tr class="trComPoints">
+			<td align="center" width="5%">#</td>
+			<td align="center"><a href="javascript://" onclick="activeInfo()">$_USERNAME$</a></td>
+			<td align="center">$_GROUP_NAME$</td>
+			<td align="center">$_REPUTATION$</td>
+			<td align="center">$_RANK_NAME$</td>
+			<td align="center">$_BLOG_ENTRIES$</td>
+		</tr>
+	</table>
+	<table id="pointTable" cellspacing="1" cellpadding="3" style="margin-top:11px;width:99%" align="center">
+		<tr>
+			<td class="thComPoints">
+				Группировка
+			</td>
+			<td class="thComPoints" width="200">
+				Шеврон
+			</td>
+			<td class="thComPoints">
+				Лидер
+			</td>
+			<td class="thComPoints" width="160">
+				Количество баз
+			</td>
+			<td class="thComPoints">
+				Очки
+			</td>
+		</tr>
+		<tr class="trComPoints">
+			<td width="160">
+				Вольные сталкеры
+			</td>
+			<td>
+				<img width="117" height="48" src="/gruupsicons/stalk.gif">
+			</td>
+			<td>
+				Отсутствует
+			</td>
+			<td>
+				1
+			</td>
+			<td id="tdScoreStalkers">
+				0
+			</td>
+		</tr>
+		<tr class="trComPoints">
+			<td>
+				Долг
+			</td>
+			<td>
+				<img width="117" height="48" src="/gruupsicons/dolg.gif">
+			</td>
+			<td>
+				Lerner
+			</td>
+			<td>
+				1
+			</td>
+			<td id="tdScoreDolg">
+				0
+			</td>
+		</tr>
+		<tr class="trComPoints">
+			<td>
+				Свобода
+			</td>
+			<td>
+				<img width="117" height="48" src="/gruupsicons/svoboda.gif">
+			</td>
+			<td>
+				Диман
+			</td>
+			<td>
+				1
+			</td>
+			<td id="tdScoreFreedom">
+				0
+			</td>
+		</tr>
+	</table>
+ </div>
+ <div id="map" style="display:none" class="interfacePM">
+	<div class="bntPosMap" id="moveRight" style="right:5px;bottom:30px;" onmousedown="moveMapeToLeft()" onmouseup="removeTimerMoveMap()" onmouseout="removeTimerMoveMap()"></div>
+	<div class="bntPosMap" id="moveDown" style="right:30px;bottom:5px;" onmousedown="moveMapeToTop()" onmouseup="removeTimerMoveMap()" onmouseout="removeTimerMoveMap()"></div>
+	<div class="bntPosMap" id="moveUp" style="right:30px;bottom:55px;" onmousedown="moveMapeToBot()" onmouseup="removeTimerMoveMap()" onmouseout="removeTimerMoveMap()"></div>
+	<div class="bntPosMap" id="moveLeft" style="right:55px;bottom:30px;" onmousedown="moveMapeToRight()" onmouseup="removeTimerMoveMap()" onmouseout="removeTimerMoveMap()"></div>
+	<div id="legend">
+		
+		<div class="legendLine">Долг - <div class="legendPoint dolg"></div></div>
+		<div class="legendLine">Свобода - <div class="legendPoint liberta"></div></div>
+		<div class="legendLine">Сталкеры - <div class="legendPoint stalker"></div></div>
+		<div class="legendLine">Нейтральная - <div class="legendPoint neitral"></div></div>
+	</div>
+	<div id="zoneMap">
+		<!-- Кордон -->
+		<div id="KordonNovizeLagerDiv"></div>
+		<div id="KordonATPDiv"></div>
+		<div id="KordonBPDiv"></div>
+		<div id="KordonMostDiv"></div>
+		<div id="KordonFermaDiv"></div>
+		<div id="KordonSvinoFermaDiv"></div>
+		<div id="KordonSBPDiv"></div>
+		<!-- /Кордон - Свалка -->
+		<div id="SvalkaDepoDiv"></div>
+		<div id="SvalkaBaraholkaDiv"></div>
+		<div id="BlockPostBarDiv"></div>
+		<div id="GarbageAutoDiv"></div>
+		<div id="LagerZaTrubamiDiv"></div>
+		<div id="OstanovkaDiv"></div>
+		<div id="DorogaNaKordonDiv"></div>
+		<div id="LagerForestDiv"></div>
+		<!-- /Свалка - Бар -->
+		<div id="ZavodRostokDiv"></div>
+		<div id="WildTerritoryDiv"></div>
+		<!-- /Бар - НИИ Агропром -->
+		<div id="AgropromDiv"></div>
+		<div id="FabrikaDiv"></div>
+		<div id="DomNaBoLOTEDiv"></div>
+		<!-- /НИИ Агропром - Янтарь -->
+		<div id="DorogaNaJantarDiv"></div>
+		<div id="BunkerUchenihDiv"></div>
+		<div id="VertoletDiv"></div>
+		<div id="IslandDiv"></div>
+		<div id="BusDiv"></div>
+		<!--
+		-->
+	</div>
+ </div>
+ <div id="calculator" style="display:none" class="interfacePM">
+	<form>
+		<div class="configBattle">
+			<div style="width:115px;position:absolute;left:10px;top:2px;"><input name="lucker" type="checkbox" checked> <span style="font-family:Tahoma,Arial;position:relative;bottom:1px">Фактор удачи</span></div>
+			<div style="width:100px;position:absolute;left:130px;top:2px;">
+				<select onchange="typeBonus(this.value);" name="typeBattle" style="background-color:#3e4444;border:1px solid #010101;color:#d2cbc0">
+					<option  value="0">Тип боя</option>
+					<option value="battle">Стычка</option>
+					<option value="attackBase">Атака базы</option>
+					<option value="attackLager">Бой за перевалочный лагерь</option>
+				</select>
+			</div>
+			<div style="width:130px;position:absolute;right:158px;top:2px;text-align:center">
+				<input type="button" id="btnAddWar" style="background-color:#3e4444;border:1px solid #010101" value="Добавить бойцов" onclick="addWarior();">
+			</div>
+			<div style="width:130px;position:absolute;right:12px;top:2px;text-align:center">
+				<input type="button" id="btnAddWar" style="background-color:#3e4444;border:1px solid #010101" value="Удалить бойцов" onclick="removeWarrior();">
+			</div>
+		</div>
+		<div id="TitleTeam1" align="center"><span style="color:#ff0015;font-family:Tahoma">Атака</span><br><input name="team1" type="text" style="background-color:#3e4444;border:1px solid #010101;color:#ff0015;text-align:center" value="Команда 1" onclick="this.select()"></div>
+		<div id="TitleTeam2" align="center"><span style="color:#00ebff;font-family:Tahoma">Защита</span><br><input name="team2" type="text" style="background-color:#3e4444;border:1px solid #010101;color:#00ebff;text-align:center" value="Команда 2" onclick="this.select()"></div>
+		<div id="usersTeam1">
+		</div>
+		<div id="usersTeam2">
+		</div>
+		<script type="text/javascript">addWarior();</script>
+		<div align="center">
+			<input id="btnAddWar" style="height:24px;margin-top:10px;width:98%;background-color:#212626;border:1px solid #3e4444;" type="button" value="РАСЧИТАТЬ" onclick="frpgCalc()">
+		</div>
+	</form>
+ </div>
+ <div id="interfacemain" class="interface">
+ <div class="miniChat" align="center" valign="middle">
+ <div id="chat">
+ <div style="border:1px solid #3e4444;overflow:hidden">
+ $CHAT_BOX$
+ </div>
+ <?if(!$USER_LOGGED_IN$)?>
+ <div class="pdaAutoris">
+ <a style="display:block;height:100%;font-size:10pt;padding-top:10px;font-family:Tahoma" href="$LOGIN_LINK$">Необходима авторизация</a>
+ </div>
+ <?endif?>
+ </div>
+ </div>
+ <div class="counter" align="center" valign="middle">
+ <div style="padding-left:15px;height:90%;margin-top:10px;margib-bottom:10px">
+ | <span class="pda-li"><a href="$_COM_ACTIVITY_URL$">Коментарии: $_COM_ENTRIES$</a></span><br>
+ | <span class="pda-li"><a href="$_FORUM_ACTIVITY_URL$">Форум: $_FORUM_ENTRIES$</a></span><br>
+ | <span class="pda-li"><a href="$_NEWS_ACTIVITY_URL$">Новости: $_NEWS_ENTRIES$</a></span><br>
+ | <span class="pda-li"><a href="$_LOAD_ACTIVITY_URL$">Файлы: $_LOAD_ENTRIES$</a></span><br>
+ </div>
+ </div>
+ <div id="equipment" class="infoUser2">
+	<div id="experience-border"><div id="experience"></div></div>
+	<div id="weapon1" class="weapon"></div>
+	<div id="body"></div>
+	<div id="weapon2" class="weapon">
+		<div id="line"></div>
+		<div class="modernWeaponDiv" id="opt"></div>
+		<div class="modernWeaponDiv" id="gl"></div>
+		<div class="modernWeaponDiv" id="bb"></div>
+		<div class="modernWeaponDiv" id="gr"></div>
+	</div>
+	<div id="art1" class="artefact"></div>
+	<div id="art2" class="artefact"></div>
+	<div id="art3" class="artefact"></div>
+	<div id="art4" class="artefact"></div>
+ </div>
+ <div id="infoUser" class="infoUser2">
+ <div class="infoContent">
+ <div id="moderPanel">$MODER_PANEL$</div>
+ <script type="text/javascript">
+	  document.all.c.style.display = 'none';
+	  //document.all.c.style.backgroundColor = '#3e4444';
+	  //document.all.c.style.border = '1px solid #010101';
+	  //document.all.c.style.height = '20px';
+	  //document.all.c.style.color = '#ffffff';
+	  //document.all.c.style.marginTop = '2px';
+	  //document.all.c.style.float = 'right';
+	  //document.all.c.style.left = '-150px';
+	  document.all.chgr.ok.style.backgroundColor = '#3e4444';
+	  document.all.chgr.ok.style.border = '1px solid #010101';
+	  document.all.chgr.ok.style.height = '20px';
+	  document.all.chgr.ok.style.color = '#ffffff';
+	  document.all.chgr.ok.style.position = 'relative';
+	  document.all.chgr.ok.style.top = '1px';
+	  document.all.chgr.ok.style.left = '1px';
+	  document.all.chgr.ok.style.marginLeft = '2px';
+  </script>
+ <table id="userinfo" width="100%" style="margin:0px">
+ <tr>
+ <td>Группа</td>
+ <td>$_GROUP_NAME$</td>
+ </tr>
+ <?if($AWARDS_READ_URL$ || $_REP_READ_URL$)?>
+ <tr>
+ <td width="130">Поощрения:</td>
+ <td><?if($AWARDS_READ_URL$)?><a href="$AWARDS_READ_URL$" title="Список наград">Награды (<b>$AWARDS$</b>)</a> <?if($AWARDS_DO_URL$)?>[<a href="$AWARDS_DO_URL$" rel="nofollow">+</a>]<?endif?><?endif?><?if($_REP_READ_URL$)?><?if($AWARDS_READ_URL$)?> &nbsp; <?endif?><a title="Смотреть историю репутации" class="repHistory" href="$_REP_READ_URL$">Репутация (<b>$_REPUTATION$</b>)</a><?if($_REP_DO_URL$)?> [<a href="$_REP_DO_URL$">&plusmn;</a>]<?endif?><?endif?></td>
+ </tr>
+ <?endif?>
+ <?if($_BAN_READ_URL$)?>
+ <tr>
+ <td>Замечания:</td>
+ <td><a title="Смотреть историю замечаний" href="$_BAN_READ_URL$">$_BAN_PERCENT$%</a> <?if($_BAN_DO_URL$)?>&nbsp; <a href="$_BAN_DO_URL$"><img alt="" style="margin:0;padding:0;border:0;" title="Изменить уровень замечаний" src="http://s60.ucoz.net/img/fr/wm.gif" width="10" height="9" /></a><img alt="" style="margin:0;padding:0;border:0;" src="http://s60.ucoz.net/img/fr/w$_BAN_RATING$.gif" width="49" height="9" /><a href="$_BAN_DO_URL$"><img alt="" style="margin:0;padding:0;border:0;" title="Изменить уровень замечаний" src="http://s60.ucoz.net/img/fr/wp.gif" width="10" height="9" /></a><?endif?></td>
+ </tr>
+ <?endif?>
+ <?if($_NAME$)?>
+ <tr>
+ <td>Имя:</td>
+ <td>$_NAME$ <?if($_GENDER_NAME$)?>[ $_GENDER_NAME$ ]<?endif?></td>
+ </tr>
+ <?endif?>
+ <?if($MODER_PANEL$)?>
+ <tr>
+ <td>IP Адресс:</td>
+ <td><a href="http://www.ripe.net/perl/whois?$_IP_ADDRESS$" target="_blank">$_IP_ADDRESS$</a></td>
+ </tr>
+ <?endif?>
+ <?if($_REG_TIME$)?>
+ <tr>
+ <td>Дата регистрации:</td>
+ <td>$_REG_TIME$</td>
+ </tr>
+ <?endif?>
+ <?if($_BIRTHDAY$)?>
+ <tr>
+ <td>Дата рождения:</td>
+ <td>$_BIRTHDAY$ [ <b>$_AGE$</b> $_ZODIAC$ ]</td>
+ </tr>
+ <?endif?>
+ <?if($_EMAIL$)?>
+ <tr>
+ <td>E-mail:</td>
+ <td><?if($_EMAIL_IS_HIDDEN$)?><?if($MODER_PANEL$)?>$_EMAIL$<?endif?><span style="font-size:7pt;color:7f7f7f"><i> (Адрес скрыт)</i></span><?else?>$_EMAIL$<?endif?>
+ </td>
+ </tr>
+ <?endif?>
+ <?if($_COUNTRY$)?>
+ <tr>
+ <td><?if($UNET_ID$)?>Место проживания<?else?>Страна<?endif?>:</td>
+ <td>$_COUNTRY$<?if($_CITY$)?> - $_CITY$ <?endif?></td>
+ </tr>
+ <?endif?>
+ <?if($_WWW$)?>
+ <tr>
+ <td>Сайт:</td>
+ <td>$_WWW$</td>
+ </tr>
+ <?endif?>
+ <?if($_ICQ$)?>
+ <tr>
+ <td>ICQ:</td>
+ <td>$_ICQ$</td>
+ </tr>
+ <?endif?>
+ <?if($_AOL$)?>
+ <tr>
+ <td>Skype:</td>
+ <td>$_AOL$</td>
+ </tr>
+ <?endif?>
+ <?if($_MSN$)?>
+ <tr>
+ <td>Steam:</td>
+ <td>$_MSN$</td>
+ </tr>
+ <?endif?>
+ <?if($_YAHOO$)?>
+ <tr>
+ <td>ВКонтакте:</td>
+ <td>$_YAHOO$</td>
+ </tr>
+ <?endif?>
+ </table>
+ </div>
+ </div>
+ <div class="avatarUser" align="center" valign="middle">
+ <div>
+ <div id="userName">$_USERNAME$</div>
+ $_AVATAR$<br>
+ <div style="margin-top:3px;margin-bottom:3px" title="$_RANK_NAME$($_RANK$)">$_RANK_ICON$</div>
+ <?if($_PM_READ_URL$)?><a href="$PM_URL$">Личных сообщений: $UNREAD_PM$</a><?endif?>
+ <?if($_PM_SEND_URL$)?><a href="$_PM_SEND_URL$" title="Отправить личное сообщение">Отправить ЛС</a><?endif?>
+ </div>
+<!--?if($USER_GROUP$=="Администраторы")?-->
+ <div id="hwd" style="position:absolute;left:5px;right:5px;bottom:5px;display:none;" align="center">
+<input name="health" title="Здоровье" type="text" value="0" style="color:#0afe00;border:1px solid #010101;background-color:#3e4444;width:40px;text-align:center" readonly onclick="this.select()" maxlength="4">
+<input name="defence" title="Броня" type="text" value="0" style="color:#00ebff;border:1px solid #010101;background-color:#3e4444;width:40px;text-align:center" readonly onclick="this.select()" maxlength="4">
+<input name="strong" title="Боевая сила" type="text" value="0" style="color:#ff0015;border:1px solid #010101;background-color:#3e4444;width:40px;text-align:center" readonly onclick="this.select()" maxlength="4">
+ </div>
+ <!--?endif?-->
+<div id="b_divWrite" style="color:#d2cbc0;position:absolute;left:5px;right:5px;bottom:5px;text-align:center;font-family:Tahoma;font-size:10pt">Баллы: <b><a onclick="toConsiderBalls()" href="#"><script type="text/javascript">document.write(ballsToConsiderReturn())</script></b></a> <a onclick="b_help()" href="#">[?]</a></div>
+ </div>
+ <div class="subscript" align="center" valign="middle">
+ <div id="subscriptTitle">Подпись:</div>
+ <div id="subscriptUser" class="flexcroll">
+ $_SIGNATURE$
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </body>
+</html>

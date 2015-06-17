@@ -1,0 +1,36 @@
+<div style="border:1px solid black">
+<?if(!$CAN_ADD$)?><div align="center"><?if($LOGIN_LINK$)?><a href="$LOGIN_LINK$">Для добавления необходима авторизация</a><?else?>Доступ запрещен<?endif?></div><?else?>
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr><td>$FLD_AUTOUPD$</td>
+<td width="70%" align="right">
+<a href="$RELOAD_URI$" title="Обновить"><img alt="" border="0" align="absmiddle" src="http://s60.ucoz.net/img/fr/mcr.gif" width="13" height="15"></a>
+<?if($SMILES_URI$)?>&nbsp;<a href="$SMILES_URI$" title="Вставить смайл"><img alt="" border="0" align="absmiddle" src="http://s60.ucoz.net/img/fr/mcs.gif" width="13" height="15"></a><?endif?>
+<?if($BBCODES_URI$)?>&nbsp;<a href="$BBCODES_URI$" title="BB-Коды"><img alt="" border="0" align="absmiddle" src="http://s60.ucoz.net/img/fr/mcb.gif" width="13" height="15"></a><?endif?>
+<?if($MSGCTRL_URI$)?>&nbsp;<a href="$MSGCTRL_URI$" title="Управление сообщениями"><img alt="" border="0" align="absmiddle" src="http://s60.ucoz.net/img/fr/mcm.gif" width="15" height="15"></a><?endif?>
+</td></tr></table>
+
+<?if(!$USER_LOGGED_IN$)?>
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr><td colspan="2">$FLD_NAME$</td></tr>
+<tr><td width="50%">$FLD_EMAIL$</td><td>$FLD_URL$</td></tr>
+</table>
+<?endif?>
+
+<?if($FLD_CUSTOM1$ || $FLD_CUSTOM2$)?>
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr><td width="50%">$FLD_CUSTOM1$</td><td>$FLD_CUSTOM2$</td></tr>
+</table>
+<?endif?>
+
+<?if($FLD_SECURE$)?>
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr><td width="50%">$FLD_SECURE$</td><td align="right">$IMG_SECURE$</td></tr>
+</table>
+<?endif?>
+
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr><td width="95%" rowspan="2">$FLD_MESSAGE$</td>
+<td align="center" valign="top"><div style="font-size:10px;">$LENGTH_COUNTER$</div></td>
+</tr><tr><td align="center" valign="bottom">$SUBMIT$</td></tr></table>
+<?endif?>
+</div>

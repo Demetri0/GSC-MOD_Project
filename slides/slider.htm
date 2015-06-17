@@ -1,0 +1,139 @@
+<html>
+	<head>
+		<title>Slider</title>
+		<!--
+var xd = 'xd_style-2012'
+var pause = 5000;
+var i = 0;
+var timer;
+slido = new Object();
+slido.pos;
+slide = new Object();
+slide.img1 = '/'+xd+'/slides/'+"slide1.jpg";
+slide.img2 = '/'+xd+'/slides/'+"slide2.jpg";
+slide.img3 = '/'+xd+'/slides/'+"slide3.jpg";
+slide.img4 = '/'+xd+'/slides/'+"slide4.jpg";
+slide.img5 = '/'+xd+'/slides/'+"slide5.jpg";
+/*----------------*/
+alpha = new Array();
+alpha[10]  = '0.0';
+alpha[9]  = '0.1';
+alpha[8]  = '0.2';
+alpha[7]  = '0.3';
+alpha[6]  = '0.4';
+alpha[5]  = '0.5';
+alpha[4]  = '0.6';
+alpha[3]  = '0.7';
+alpha[2]  = '0.8';
+alpha[1]  = '0.9';
+alpha[0]  = '1.0';
+/*----------------*/
+function loadSlider(){
+img1 = document.getElementById('img1');
+img2 = document.getElementById('img2');
+img3 = document.getElementById('img3');
+img4 = document.getElementById('img4');
+img5 = document.getElementById('img5');
+setTimeout('showAlpha(img1)',pause);
+}
+/*---------------*/
+function show(pos){
+	switch (pos){
+		case img1: img5.style.zIndex='3';img4.style.zIndex='3';img1.style.zIndex='3';img1.style.opacity='1.0';img2.style.zIndex='5';img3.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img2)',pause);break;
+		case img2: img1.style.zIndex='3';img5.style.zIndex='3';img2.style.zIndex='3';img2.style.opacity='1.0';img3.style.zIndex='5';img4.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img3)',pause);break;
+		case img3: img2.style.zIndex='3';img1.style.zIndex='3';img3.style.zIndex='3';img3.style.opacity='1.0';img4.style.zIndex='5';img5.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img4)',pause);break;
+		case img4: img3.style.zIndex='3';img2.style.zIndex='3';img4.style.zIndex='3';img4.style.opacity='1.0';img5.style.zIndex='5';img1.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img5)',pause);break;
+		case img5: img4.style.zIndex='3';img3.style.zIndex='3';img5.style.zIndex='3';img5.style.opacity='1.0';img1.style.zIndex='5';img2.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img1)',pause);break;
+	}
+}
+function showAlpha(image){
+	image.style.opacity = alpha[i];
+	i++;
+	slido.pos = image;
+	if(i<=10){timer = setTimeout("showAlpha(slido.pos)",50);}
+	else{setTimeout(timer = 'show(slido.pos)',50);
+	}
+}
+		-->
+		<style type="text/css">
+			#totop{width:80px;height:40px;right:5px;bottom:5px;position:fixed;background-color:black;text-align:center;color:white;opacity:0.6;}
+			#totop:hover{opacity:0.8}
+			#bottom{border:1px solid black;margin-top:5px;height:1000px;}
+			#slider{width:398px;height:155px;margin:0 auto;border:1px solid black;overflow:hidden}
+			.img{width:398px;height:155px;}
+			#img1{display:block;background-image:url('slide1.jpg');position:relative;top:0px;z-index:5;}
+			#img2{display:block;background-image:url('slide2.jpg');position:relative;top:-155px;z-index:4}
+			#img3{display:block;background-image:url('slide3.jpg');position:relative;top:-310px;z-index:3}
+			#img4{display:block;background-image:url('slide4.jpg'):relative;top:-465px;z-index:3}
+			#img5{display:block;background-image:url('slide5.jpg');position:relative;top:-620px;z-index:3}
+		</style>
+		<script type="text/javascript">
+		var i = 0;
+		var timer;
+		slido = new Object();
+		slido.pos;
+		slido.i = 0;
+		slido.timer = 100;
+		window.onload = function (){
+			alpha = new Array();
+			alpha[10]  = '0.0';
+			alpha[9]  = '0.1';
+			alpha[8]  = '0.2';
+			alpha[7]  = '0.3';
+			alpha[6]  = '0.4';
+			alpha[5]  = '0.5';
+			alpha[4]  = '0.6';
+			alpha[3]  = '0.7';
+			alpha[2]  = '0.8';
+			alpha[1]  = '0.9';
+			alpha[0]  = '1.0';
+			img1 = document.getElementById('img1');
+			img2 = document.getElementById('img2');
+			img3 = document.getElementById('img3');
+			img4 = document.getElementById('img4');
+			img5 = document.getElementById('img5');
+			setTimeout('showAlpha(img1)',5000);
+			}
+			function show(pos){
+				switch (pos){
+					case img1: img5.style.zIndex='3';img4.style.zIndex='3';img1.style.zIndex='3';img1.style.opacity='1.0';img2.style.zIndex='5';img3.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img2)',5000);break;
+					case img2: img1.style.zIndex='3';img5.style.zIndex='3';img2.style.zIndex='3';img2.style.opacity='1.0';img3.style.zIndex='5';img4.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img3)',5000);break;
+					case img3: img2.style.zIndex='3';img1.style.zIndex='3';img3.style.zIndex='3';img3.style.opacity='1.0';img4.style.zIndex='5';img5.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img4)',5000);break;
+					case img4: img3.style.zIndex='3';img2.style.zIndex='3';img4.style.zIndex='3';img4.style.opacity='1.0';img5.style.zIndex='5';img1.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img5)',5000);break;
+					case img5: img4.style.zIndex='3';img3.style.zIndex='3';img5.style.zIndex='3';img5.style.opacity='1.0';img1.style.zIndex='5';img2.style.zIndex='4';i=0;timer = setTimeout('showAlpha(img1)',5000);break;
+				}
+			}
+			function showAlpha(image){
+				//image.style.zIndex = '5';
+				image.style.opacity = alpha[i];
+				i++;
+				slido.pos = image;
+				if(i<=10){timer = setTimeout("showAlpha(slido.pos)",50);}
+				else{setTimeout(timer = 'show(slido.pos)',50);
+				}
+			}
+			function layerSbros(){
+				img1.style.zIndex='3';
+				img2.style.zIndex='3';
+				img3.style.zIndex='3';
+				img4.style.zIndex='3';
+				img5.style.zIndex='3';
+			}
+			function clicks(){
+				clearTimeout(timer);
+				showAlpha(img3);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="slider">
+			<div class="img" id="img1"><div style="height:115px">1</div><div id="slider_title">Создание НПС. Тайны all.spawn </div><div id="slider_text_down">В этом уроке вы научитесь спавнить неписей и др. </div></div>
+			<div class="img" id="img2"><div style="height:115px">2</div><div id="slider_title">Создание НПС. Тайны all.spawn </div><div id="slider_text_down">В этом уроке вы научитесь спавнить неписей и др. </div></div>
+			<div class="img" id="img3"><div style="height:115px">3</div><div id="slider_title">Создание НПС. Тайны all.spawn </div><div id="slider_text_down">В этом уроке вы научитесь спавнить неписей и др. </div></div>
+			<div class="img" id="img4"><div style="height:115px">4</div><div id="slider_title">Создание НПС. Тайны all.spawn </div><div id="slider_text_down">В этом уроке вы научитесь спавнить неписей и др. </div></div>
+			<div class="img" id="img5"><div style="height:115px">5</div><div id="slider_title">Создание НПС. Тайны all.spawn </div><div id="slider_text_down">В этом уроке вы научитесь спавнить неписей и др. </div></div>
+		</div>
+		<div id="bottom"></div>
+		<div id="totop" onclick="clicks()">Вверх</div>
+	</body>
+</html>

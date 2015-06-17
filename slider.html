@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Расширяемый слайдер на CSS3 и JS</title>
+	<style type="text/css">
+		body{text-align:center;background-color:#c4c4c4;color:white}
+		a{color:lime;text-decoration:none}
+		a:hover{color:white}
+		#slider{position:relative}
+		.slideDiv{-moz-transition: opacity 1.2s ease-in-out;-o-transition: opacity 1.2s ease-in-out;-webkit-transition: opacity 1.2s ease-in-out;}
+		#slider > div{position:absolute;left:0px;top:0px;width:398px;height:155px;border:0px;text-shadow:1px 1px 1px black;overflow:hidden;box-shadow: inset 0px 0px 16px 4px black}
+		#slider > div > div{position:absolute;left:0px;height:20px;width:394px;background-color:rgba(0,0,0,0.6);text-align:left;padding:2px 2px 2px 2px;overflow:hidden}
+		#slider > div > div:first-child{bottom:24px;height:22px;font-size:15pt;}
+		#slider > div > div:last-child{bottom:0px;font-size:12pt;}
+	</style>
+	<script type="text/javascript">
+		var sliderPics = new Array();
+		var sliderCapt = new Array();
+		var sliderDesc = new Array();
+		
+		sliderPics[0] = 'slides/slide1.jpg';
+		sliderCapt[0] = 'Слайд первый';
+		sliderDesc[0] = 'Это первый слайд';
+		
+		sliderPics[1] = 'slides/slide2.jpg';
+		sliderCapt[1] = 'Слайд второй';
+		sliderDesc[1] = 'Это второй слайд';
+		
+		sliderPics[2] = 'slides/slide3.jpg';
+		sliderCapt[2] = 'Третий слайд';
+		sliderDesc[2] = 'Это третий слайд';
+		
+		sliderPics[3] = 'slides/slide4.jpg';
+		sliderCapt[3] = 'Cлайд четвёртый';
+		sliderDesc[3] = 'Это четвёртый слайд';
+		
+		sliderPics[4] = 'slides/slide5.jpg';
+		sliderCapt[4] = '<a href="#">И даже ссылка</a>';
+		sliderDesc[4] = 'А это пятый слайд';
+		
+		sliderPics[5] = 'slides/slide1.jpg';
+		sliderCapt[5] = 'Cлайд шестой';
+		sliderDesc[5] = 'А это шестой слайд';
+		
+		sliderPics[6] = 'slides/slide2.jpg';
+		sliderCapt[6] = 'Cлайд седьмой';
+		sliderDesc[6] = 'А это седьмой слайд';
+		
+		function writeSlider(){
+			var slider = document.getElementById('slider');
+			for(var si = 0;si < sliderPics.length;si++){
+				var slideDiv = document.createElement('div');
+				var slideDivCapt = document.createElement('div');
+				var slideDivDesc = document.createElement('div');
+				
+				slideDiv.zIndex = si;
+				slideDiv.className = 'slideDiv';
+				slideDiv.id = 'slide'+si;
+				
+				slider.appendChild(slideDiv);
+				slideDiv.style.backgroundImage = 'url(' + sliderPics[si] + ')';
+				
+				slideDiv.appendChild(slideDivCapt);
+				slideDivCapt.innerHTML = sliderCapt[si];
+				
+				slideDiv.appendChild(slideDivDesc);
+				slideDivDesc.innerHTML = sliderDesc[si];
+			}
+		}
+		var iterationShowSlide = sliderPics.length-1;
+		function sliderImgZiTo0(x){
+			if(x){var slideThis = document.getElementById('slide0');}else{var slideThis = document.getElementById('slide'+(iterationShowSlide+1));}
+			slideThis.style.zIndex = '1';
+			slideThis.style.opacity = '1';
+		}
+		function showSlide(){
+			var slideThis = document.getElementById('slide'+iterationShowSlide);
+			if(iterationShowSlide==0){var slideNext = document.getElementById('slide'+(sliderPics.length-1));}else{var slideNext = document.getElementById('slide'+(iterationShowSlide-1));}
+			slideThis.style.zIndex = '3';
+			slideNext.style.zIndex = '2';
+			slideThis.style.opacity = '0';
+			if(iterationShowSlide == 0){iterationShowSlide = sliderPics.length-1;setTimeout('sliderImgZiTo0(1)',1200)}else{iterationShowSlide--;setTimeout('sliderImgZiTo0()',1200)}
+		}
+		setInterval('showSlide()',4000);
+	</script>
+</head>
+<body>
+	<div id="slider"></div>
+	<script type="text/javascript">writeSlider();</script>
+</body>
+<html>
